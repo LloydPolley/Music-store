@@ -2,7 +2,7 @@ import React from 'react';
 
 
 const MyAccount = () => (
-    <div>
+    <div className="accountPageContainer">
         <h1>My Account</h1>
     </div>
 )

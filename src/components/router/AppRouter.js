@@ -5,7 +5,8 @@ import Navigation from './Navigation';
 import HomePage from "../HomePage";
 import MyAccount from '../userInfo/MyAccount';
 import MyBookings from '../userInfo/MyBookings';
-import ProductListings from '../products/ProductListings';
+import ProductListingPage from '../products/ProductListingsPage';
+import AdminProductAdder from '../admin/AdminProductAdder';
 
 
 const AppRouter = () => (
@@ -14,9 +15,10 @@ const AppRouter = () => (
     <>
       <Switch>
         <Route path="/" component={HomePage} exact={true} />
-        <Route path="/product-listings" component={ProductListings} exact={true} />
+        <Route path="/products" component={ProductListingPage} exact={true} />
         <Route path="/bookings" component={MyBookings} exact={true} />
         <Route path="/account" component={MyAccount} exact={true} />
+        <Route path="/addProduct" component={AdminProductAdder} exact={true} />
       </Switch>
     </>
   </BrowserRouter>
