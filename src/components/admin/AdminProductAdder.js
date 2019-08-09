@@ -1,10 +1,20 @@
-import React, { useState, useReducer } from "react";
-import productsReducer from "../reducers/products";
-import ProductsContext from "../context/productsContext";
+import React, { useState, useReducer, useEffect } from "react";
+import {connect} from 'react-redux';
+import ProductListItem from '../products/ProductListItem';
 
-const AdminProductAdder = () => {
+import {addProduct, removeProduct} from '../../actions/products';
+
+const AdminProductAdder = (props) => {
   const [productName, setProductName] = useState("");
   const [productPrice, setProductPrice] = useState("");
+  const [id, setId] = useState("");
+  // const [products, setProducts] = useState([]);
+
+
+  const removeProductHandler = (id) => {
+    props.dispatch(removeProduct(id));
+    console.log('remove button clicked')
+  }
 
   return (
     <div className="productAdder">
@@ -12,19 +22,40 @@ const AdminProductAdder = () => {
       <form
         onSubmit={e => {
           e.preventDefault();
-          console.log("form submit", productName);
-
-          //   dispatch({action: 'POPULATE_PRODUCTS', productName})
+          setProductName('');
+          setProductPrice('');
+          props.dispatch(addProduct({id: id, productName, productPrice}))
         }}
       >
+        <input
+          value={id}
+          onChange={e => setId(e.target.value)}
+        />
         <input
           value={productName}
           onChange={e => setProductName(e.target.value)}
         />
+        <input
+          value={productPrice}
+          onChange={e => setProductPrice(e.target.value)}
+        />
         <button>Add product</button>
       </form>
+      {props.products.map((product)=>{
+        return(
+          <ProductListItem key={product.id} id={product.id} productName={product.productName} productPrice={product.productPrice} removeProduct={removeProductHandler}/>
+        )
+      })}
     </div>
   );
 };
 
-export default AdminProductAdder;
+
+const mapStateToProps = (state) =>{
+  return{
+    products: state.products
+  }
+}
+
+export default connect(mapStateToProps)(AdminProductAdder);
+// export default AdminProductAdder;

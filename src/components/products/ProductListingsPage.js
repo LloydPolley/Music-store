@@ -1,14 +1,24 @@
 import React, {useReducer} from "react";
-import productsReducer from '../reducers/products';
+import productsReducer from '../../reducers/products';
 import ProductListItem from './ProductListItem';
+import { connect } from "react-redux";
 
-const ProductListingPage = () => {
+const ProductListingPage = (props) => {
   return (
     <div className="productListingPageContainer">
       <h1>ProductListing</h1>
-      {/* <button onClick={()=>{console.log('products state', products)}}>Print</button> */}
+      {props.products.map((product)=> {
+        return <ProductListItem key={product.id} id={product.id} productName={product.productName} productPrice={product.productPrice}/>
+      })}
     </div>
   );
 };
 
-export default ProductListingPage;
+
+const mapStateToProps = (state) => {
+  return{
+    products: state.products
+  }
+}
+
+export default connect(mapStateToProps)(ProductListingPage);

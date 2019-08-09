@@ -12,7 +12,7 @@ import AdminProductAdder from '../admin/AdminProductAdder';
 const AppRouter = () => (
   <BrowserRouter>
     <Navigation/>
-    <>
+    <div className='app'>
       <Switch>
         <Route path="/" component={HomePage} exact={true} />
         <Route path="/products" component={ProductListingPage} exact={true} />
@@ -20,7 +20,7 @@ const AppRouter = () => (
         <Route path="/account" component={MyAccount} exact={true} />
         <Route path="/addProduct" component={AdminProductAdder} exact={true} />
       </Switch>
-    </>
+    </div>
   </BrowserRouter>
 );
 
