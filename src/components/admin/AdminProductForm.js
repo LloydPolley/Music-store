@@ -1,7 +1,7 @@
-import React, { useState, useReducer, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
-import ProductListItem from "../products/ProductListItem";
-import { addProduct, removeProduct } from "../../actions/products";
+// import ProductListItem from "../products/ProductListItem";
+import { addProduct } from "../../actions/products";
 
 const AdminProductForm = (props) => {
   const [productName, setProductName] = useState("");

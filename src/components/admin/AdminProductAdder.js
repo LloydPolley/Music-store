@@ -1,8 +1,8 @@
-import React, { useState, useReducer, useEffect } from "react";
+import React, {} from "react";
 import { connect } from "react-redux";
-import ProductListItem from "../products/ProductListItem";
+import AdminProductListItem from "../admin/AdminProductListItem";
 
-import { addProduct, removeProduct } from "../../actions/products";
+import { removeProduct } from "../../actions/products";
 import AdminProductForm from './AdminProductForm';
 
 const AdminProductAdder = props => {
@@ -17,7 +17,7 @@ const AdminProductAdder = props => {
       <AdminProductForm/>
       {props.products.map(product => {
         return (
-          <ProductListItem
+          <AdminProductListItem
             key={product.id}
             id={product.id}
             admin={'editProduct'}

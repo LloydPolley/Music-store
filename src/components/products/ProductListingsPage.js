@@ -1,5 +1,4 @@
-import React, { useReducer } from "react";
-import productsReducer from "../../reducers/products";
+import React, {  } from "react";
 import ProductListItem from "./ProductListItem";
 import { connect } from "react-redux";
 
