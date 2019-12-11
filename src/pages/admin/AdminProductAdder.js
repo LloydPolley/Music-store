@@ -1,9 +1,9 @@
 import React from "react";
 import { connect } from "react-redux";
-import AdminProductListItem from "../admin/AdminProductListItem";
+import AdminProductListItem from "../../components/admin/AdminProductListItem";
 
 import { removeProduct } from "../../actions/products";
-import AdminProductForm from "./AdminProductForm";
+import AdminProductForm from "../../components/admin/AdminProductForm";
 
 const AdminProductAdder = props => {
   const removeProductHandler = id => {

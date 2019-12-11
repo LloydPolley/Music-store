@@ -2,12 +2,6 @@ import React, { } from "react";
 import { Link } from "react-router-dom";
 
 const AdminProductListItem = props => {
-
-  // const [admin, setAdmin] = useState('');
-  // useEffect(()=>{
-  //   setAdmin(props.admin)
-  // })
-
   return (
     <div className="productListItem">
       <Link to={`editProduct/${props.id}`}>

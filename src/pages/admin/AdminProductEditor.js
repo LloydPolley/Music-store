@@ -1,6 +1,6 @@
 import React from 'react';
 import {  } from 'react-redux';
-import AdminProductForm from './AdminProductForm';
+import AdminProductForm from '../../components/admin/AdminProductForm';
 
 
 

@@ -1,5 +1,5 @@
 import React from "react";
-import ProductListItem from "./ProductListItem";
+import ProductListItem from "../../components/products/ProductListItem";
 import { connect } from "react-redux";
 
 const ProductListingPage = props => {
