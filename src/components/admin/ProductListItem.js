@@ -1,7 +1,7 @@
 import React, { } from "react";
 import { Link } from "react-router-dom";
 
-const AdminProductListItem = props => {
+const ProductListItem = props => {
   return (
     <div className="productListItem">
       <Link to={`editProduct/${props.id}`}>
@@ -17,4 +17,4 @@ const AdminProductListItem = props => {
   );
 };
 
-export default AdminProductListItem;
+export default ProductListItem;

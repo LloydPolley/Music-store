@@ -1,5 +1,5 @@
 import React from 'react';
-import LargeTile from './tiles/LargeTile';
+import LargeTile from '../components/tiles/Large';
 
 
 const HomePage = () => {

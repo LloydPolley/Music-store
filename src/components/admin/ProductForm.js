@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
-// import ProductListItem from "../products/ProductListItem";
 import { addProduct } from "../../actions/products";
 
-const AdminProductForm = (props) => {
+const ProductForm = (props) => {
   const [productName, setProductName] = useState("");
   const [productPrice, setProductPrice] = useState("");
   const [id, setId] = useState("");
@@ -59,4 +58,4 @@ const mapStateToProps = (state,props) => {
   };
 };
 
-export default connect(mapStateToProps)(AdminProductForm);
+export default connect(mapStateToProps)(ProductForm);

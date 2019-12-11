@@ -1,5 +1,5 @@
 import React from "react";
-import ProductListItem from "../../components/products/ProductListItem";
+import ListItem from "../../components/products/ListItem";
 import { connect } from "react-redux";
 
 const ProductListingPage = props => {
@@ -9,7 +9,7 @@ const ProductListingPage = props => {
       <div className="productListings__list">
         {props.products.map(product => {
           return (
-            <ProductListItem
+            <ListItem
               key={product.id}
               id={product.id}
               admin={"product"}

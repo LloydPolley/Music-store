@@ -1,11 +1,11 @@
 import React from "react";
+import ProductListItem from "../../components/admin/ProductListItem";
+import ProductForm from "../../components/admin/ProductForm";
+
 import { connect } from "react-redux";
-import AdminProductListItem from "../../components/admin/AdminProductListItem";
-
 import { removeProduct } from "../../actions/products";
-import AdminProductForm from "../../components/admin/AdminProductForm";
 
-const AdminProductAdder = props => {
+const ProductAdder = props => {
   const removeProductHandler = id => {
     props.dispatch(removeProduct(id));
     console.log("remove button clicked");
@@ -14,11 +14,11 @@ const AdminProductAdder = props => {
   return (
     <div className="productAdder">
       <h1>Add product</h1>
-      <AdminProductForm />
+      <ProductForm />
       <div className="productListings__list">
         {props.products.map(product => {
           return (
-            <AdminProductListItem
+            <ProductListItem
               key={product.id}
               id={product.id}
               admin={"editProduct"}
@@ -39,5 +39,5 @@ const mapStateToProps = state => {
   };
 };
 
-export default connect(mapStateToProps)(AdminProductAdder);
-// export default AdminProductAdder;
+export default connect(mapStateToProps)(ProductAdder);
+// export default ProductAdder;

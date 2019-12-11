@@ -3,7 +3,7 @@ import { NavLink } from "react-router-dom";
 import { MdLibraryMusic } from "react-icons/md";
 import { FiChevronsRight } from "react-icons/fi";
 import { connect } from "react-redux";
-import BasketWidget from "../basket/BasketWidget";
+import BasketWidget from "../components/basket/Widget";
 
 const Navigation = props => {
   const mobButton = useRef(null);
