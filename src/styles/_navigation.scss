@@ -42,15 +42,35 @@
     .navMobIcon {
         display: none;
     }
+    .basketWidget{
+        background-color: grey;
+        border-radius: 5px;
+        padding: 1em;
+        box-sizing: border-box;
+    }
+    .basketWidgetContainer{
+        opacity: 0;
+        position: absolute;
+        right: 2%;
+        transform: translate(200%);
+        transition: .5s ease all;
+    }
+    .show{
+        opacity: 1;
+        transform: none;
+    }
+
     .navBar {
-        margin: 2em auto;
+        margin: 0em auto;
         max-width: 1200px;
         width: 99vw;
         display: flex;
         justify-content: space-between;
+        padding: 1em;
+        box-sizing: border-box;
 
         a {
-            color: black;
+            color: rgb(170, 170, 170);
         }
         p{
             margin: 0;
@@ -59,11 +79,11 @@
         &__linksContainer{
             display: flex;
             justify-content: space-between;
-            width: 50%;
+            width: 100%;
         }
 
         .activeNav {
-            color: blue;
+            color: white;
             // border-bottom: 2px solid blue;
             // text-decoration: initial;
         }

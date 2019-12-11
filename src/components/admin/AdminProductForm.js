@@ -30,7 +30,7 @@ const AdminProductForm = (props) => {
     >
       <div className="productId">
         <label>Product ID</label>
-        <input value={id} onChange={e => setId(e.target.value)} />
+        <input value={id} onChange={e => setId(parseInt(e.target.value))} />
       </div>
       <div className="productName">
         <label>Product Name</label>
@@ -43,7 +43,7 @@ const AdminProductForm = (props) => {
         <label>Product Price</label>
         <input
           value={productPrice}
-          onChange={e => setProductPrice(e.target.value)}
+          onChange={e => setProductPrice(parseInt(e.target.value))}
         />
       </div>
 

@@ -1,7 +1,13 @@
 
 
 .productAdderForm{
-    label{
-        min-width: 200px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    div{
+        display: flex;
+        flex-direction: column;
+        width: 32%;
     }
 }

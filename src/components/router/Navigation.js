@@ -1,11 +1,13 @@
 import React, { useRef } from "react";
 import { NavLink } from "react-router-dom";
+import { MdLibraryMusic } from "react-icons/md";
 import { FiChevronsRight } from "react-icons/fi";
 import { connect } from "react-redux";
+import BasketWidget from "../basket/BasketWidget";
 
 const Navigation = props => {
   const mobButton = useRef(null);
-  console.log("nav state", props);
+  const basketIcon = useRef(null);
 
   const openMobMenu = e => {
     console.log("menu clicked");
@@ -14,6 +16,14 @@ const Navigation = props => {
   };
   const closeMenu = () => {
     mobButton.current.classList.toggle("show");
+  };
+
+  const basketHover = e => {
+    basketIcon.current.classList += " show";
+  };
+  const basketLeave = e => {
+    basketIcon.current.classList = "basketWidgetContainer";
+    console.log(basketIcon);
   };
 
   return (
@@ -63,10 +73,25 @@ const Navigation = props => {
           >
             Admin
           </NavLink>
-          {/* <NavLink to="/" activeClassName="activeNav" exact={true}>Log out</NavLink> */}
-        </div>
-        <div className="basketContainer">
-          <p>Basket Items: {props.basket.length}</p>
+          <div className="basketContainer">
+            <p
+              onClick={e => {
+                basketHover(e);
+              }}
+            >
+              <MdLibraryMusic />
+              {props.basket.length}
+            </p>
+            <div className="basketWidgetContainer" ref={basketIcon} onClick={e => {
+                  basketLeave(e);
+                  console.log('widget')
+                }}>
+              <BasketWidget
+                className="basketWidget"
+                basket={props.basket}
+              />
+            </div>
+          </div>
         </div>
       </div>
     </div>

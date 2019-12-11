@@ -1,32 +1,29 @@
 import React from "react";
 import { connect } from "react-redux";
-import { useState, useEffect } from "react";
+// import { useState, useEffect } from "react";
+import {addProductBasket} from '../../actions/basket';
 
 
 const ProductPage = props => {
-  useEffect(() => {
-    console.log('pp', props.products, props.match.params.id)
-    props.products.map(product => {
-        // console.log(product.id, parseInt(props.match.params.id));
-        if(product.id === parseInt(props.match.params.id)){
-            return product;
-        }else{
-            console.log('invalid id')
-        }
-    })
-  });
-
   return (
     <div>
-      <h1>Products / Product Page - {console.log(props.match.params.id)}</h1>
+      <h1>Products / Product Page - {props.stateProduct[0].id}</h1>
+      <p>{props.stateProduct[0].productName}</p>
+      <p>{props.stateProduct[0].productPrice}</p>
+      <button onClick={()=>{
+        props.dispatch(addProductBasket({id: props.stateProduct[0].id, productName: props.stateProduct[0].productName, productPrice: props.stateProduct[0].productPrice}))
+      }}>Add</button>
     </div>
   );
 };
 
-const mapStateToProps = state => {
-  return {
-    products: state.products
-  };
+const mapStateToProps = (state, props) => {  
+  const stateProduct = state.products.filter(product => {
+    if (product.id === parseInt(props.match.params.id)) {
+      return product;
+    }
+  });
+  return {stateProduct};
 };
 
 export default connect(mapStateToProps)(ProductPage);

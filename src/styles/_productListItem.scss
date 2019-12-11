@@ -1,4 +1,25 @@
 
+.productListings{
+    &__list{
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+}
+
 .productListItem{
-    border: 1px dotted grey;
+    width: 32%;
+    padding: 1em;
+    box-sizing: border-box;
+    background-color: #2b2a2a;
+    margin-bottom: 2%;
+
+    a{
+        color: white;
+        text-decoration: none;
+
+        &:hover{
+            color: rgb(95, 95, 134);
+        }
+    }
 }

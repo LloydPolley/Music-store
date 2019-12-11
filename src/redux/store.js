@@ -19,10 +19,10 @@ const testProductsArray = [
     {id: 2, productName: 'test product2', productPrice: 2},
     {id: 3, productName: 'test product3', productPrice: 3}
 ]
-const testBasketArray = [
-    {id: 2, productName: 'test product2', productPrice: 2},
-    {id: 3, productName: 'test product2', productPrice: 2}
-]
+// const testBasketArray = [
+//     {id: 2, productName: 'test product2', productPrice: 2},
+//     {id: 3, productName: 'test product2', productPrice: 2}
+// ]
 
 // const testProduct = {id: 4, productName: 'test product4', productPrice: 4};
 
@@ -32,7 +32,7 @@ store.subscribe(()=>{
 
 
 store.dispatch(populateProducts(testProductsArray));
-store.dispatch(populateBasket(testBasketArray));
+// store.dispatch(populateBasket(testBasketArray));
 // store.dispatch(addProduct(testProduct));
 // store.dispatch(removeProduct(2));
 // store.dispatch(removeProduct(3));
