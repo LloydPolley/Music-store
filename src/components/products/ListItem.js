@@ -5,8 +5,8 @@ const ProductListItem = props => {
   return (
     <div className="productListItem">
       <Link to={`product/${props.id}`}>
-        <h1>{props.productName}</h1>
-        <p>{props.productPrice}</p>
+        <h1>{props.songTitle}</h1>
+        <p>{props.artist}</p>
       </Link>
     </div>
   );

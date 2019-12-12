@@ -13,8 +13,9 @@ const ProductListingPage = props => {
               key={product.id}
               id={product.id}
               admin={"product"}
-              productName={product.productName}
-              productPrice={product.productPrice}
+              artist={product.artist}
+              songTitle={product.songTitle}
+              price={product.price}
             />
           );
         })}

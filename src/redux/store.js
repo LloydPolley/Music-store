@@ -15,9 +15,14 @@ const store = createStore(
 )
 
 const testProductsArray = [
-    {id: 1, productName: 'test product', productPrice: 1},
-    {id: 2, productName: 'test product2', productPrice: 2},
-    {id: 3, productName: 'test product3', productPrice: 3}
+    {id: 1, artist: 'Artbat', songTitle: 'Oz', price: 150},
+    {id: 2, artist: 'Tale of us', songTitle: 'Swallow', price: 175},
+    {id: 3, artist: '&ME', songTitle: 'Garden', price: 109},
+    {id: 4, artist: 'Jimi Jules', songTitle: 'Fool', price: 159},
+    {id: 5, artist: 'Bicep', songTitle: 'Aura', price: 139},
+    {id: 6, artist: 'Colyn', songTitle: 'Resolve', price: 169},
+    {id: 7, artist: 'HOSH', songTitle: 'Midnight', price: 129},
+    {id: 8, artist: 'Mathame', songTitle: 'Skywalking', price: 109}
 ]
 // const testBasketArray = [
 //     {id: 2, productName: 'test product2', productPrice: 2},
