@@ -9,7 +9,7 @@ const BasketWidget = props => {
       <h1>Basket widget</h1>
       {props.basket.map(item => {
           return (
-          <div key={item.id}>{item.productName}</div>);
+          <div key={item.id}>{item.songTitle}</div>);
         })}
     </div>
   );

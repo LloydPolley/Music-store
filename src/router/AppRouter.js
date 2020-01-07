@@ -9,6 +9,7 @@ import ProductListingPage from '../pages/products/ProductListings';
 import ProductAdder from '../pages/admin/ProductAdder';
 import ProductEditor from "../pages/admin/ProductForm";
 import ProductPage from '../pages/products/ProductPage';
+import Footer from '../components/footer/Footer';
 
 
 const AppRouter = () => (
@@ -21,9 +22,10 @@ const AppRouter = () => (
         <Route path="/basket" component={Basket} exact={true} />
         <Route path="/account" component={Account} exact={true} />
         <Route path="/addProduct" component={ProductAdder} exact={true} />
-        <Route path='/editProduct/:id' component={ProductEditor}/>
-        <Route path='/product/:id' component={ProductPage}/>
+        <Route path='/addProduct/:id' component={ProductEditor}/>
+        <Route path='/products/:id' component={ProductPage}/>
       </Switch>
+      <Footer/>
     </div>
   </BrowserRouter>
 );

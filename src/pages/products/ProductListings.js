@@ -1,25 +1,13 @@
 import React from "react";
 import ListItem from "../../components/products/ListItem";
 import { connect } from "react-redux";
+import ProductList from '../../components/products/ProductList';
 
 const ProductListingPage = props => {
   return (
     <div className="productListings">
       <h1>Products/ProductListing</h1>
-      <div className="productListings__list">
-        {props.products.map(product => {
-          return (
-            <ListItem
-              key={product.id}
-              id={product.id}
-              admin={"product"}
-              artist={product.artist}
-              songTitle={product.songTitle}
-              price={product.price}
-            />
-          );
-        })}
-      </div>
+      <ProductList products={props.products} dispatch={props.dispatch} location="products"/>
     </div>
   );
 };

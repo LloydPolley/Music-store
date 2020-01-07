@@ -15,14 +15,14 @@ const store = createStore(
 )
 
 const testProductsArray = [
-    {id: 1, artist: 'Artbat', songTitle: 'Oz', price: 150},
-    {id: 2, artist: 'Tale of us', songTitle: 'Swallow', price: 175},
-    {id: 3, artist: '&ME', songTitle: 'Garden', price: 109},
-    {id: 4, artist: 'Jimi Jules', songTitle: 'Fool', price: 159},
-    {id: 5, artist: 'Bicep', songTitle: 'Aura', price: 139},
-    {id: 6, artist: 'Colyn', songTitle: 'Resolve', price: 169},
-    {id: 7, artist: 'HOSH', songTitle: 'Midnight', price: 129},
-    {id: 8, artist: 'Mathame', songTitle: 'Skywalking', price: 109}
+    {id: 1, artist: 'Artbat', songTitle: 'Oz', price: 150, musicFile: require('../musicFiles/sounds/Monolink-Swallow-(Tale Of Us Remix).mp3'), artwork: require('../musicFiles/artwork/artbat.jpg'), promo: false},
+    {id: 2, artist: 'Tale of us', songTitle: 'Swallow', price: 175, musicFile: require('../musicFiles/sounds/Monolink-Swallow-(Tale Of Us Remix).mp3'), artwork: require('../musicFiles/artwork/swallow.jpg'), promo: false},
+    {id: 3, artist: '&ME', songTitle: 'Garden', price: 109, musicFile: '', artwork: require('../musicFiles/artwork/garden.jpg'), promo: false},
+    {id: 4, artist: 'Jimi Jules', songTitle: 'Fool', price: 159, musicFile: '', artwork: require('../musicFiles/artwork/fool.jpg'), promo: false},
+    {id: 5, artist: 'Bicep', songTitle: 'Aura', price: 139, musicFile: '', artwork: require('../musicFiles/artwork/bicepaura.jpg'), promo: false},
+    {id: 6, artist: 'Colyn', songTitle: 'Resolve', price: 169, musicFile: '', artwork: require('../musicFiles/artwork/colynresolve.jpg'), promo: false},
+    {id: 7, artist: 'HOSH', songTitle: 'Midnight', price: 129, musicFile: '', artwork: require('../musicFiles/artwork/midnight.jpg'), promo: false},
+    {id: 8, artist: 'Mathame', songTitle: 'Skywalking', price: 109, musicFile: '', artwork: require('../musicFiles/artwork/skywalking.jpg'), promo: false}
 ]
 // const testBasketArray = [
 //     {id: 2, productName: 'test product2', productPrice: 2},

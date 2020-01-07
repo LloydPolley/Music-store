@@ -3,11 +3,24 @@
 .productAdderForm{
     width: 100%;
     display: flex;
+    flex-direction: row;
     justify-content: space-between;
     flex-wrap: wrap;
     div{
         display: flex;
-        flex-direction: column;
-        width: 32%;
+        flex-direction: row;
+        width: 100%;
+        // justify-content: space-between;
+        margin-bottom: .2em;
+
+        label{
+            width: 25%;
+        }
+        input{
+            width: 50%;
+            border-radius: 5px;
+            padding: .5em;
+            font-size: 18px;
+        }
     }
 }

@@ -39,6 +39,9 @@
 }
 
 @media(min-width: 1000px) {
+    .navBarContainer{
+        background-color: black;
+    }
     .navMobIcon {
         display: none;
     }
