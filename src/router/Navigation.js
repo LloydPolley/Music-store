@@ -27,11 +27,11 @@ const Navigation = props => {
   };
 
   const basketAnimation = e => {
-    this.basketHover()
-    setTimeout(function(){
-      this.basketLeave()
-    },1500)
-  }
+    this.basketHover();
+    setTimeout(function() {
+      this.basketLeave();
+    }, 1500);
+  };
 
   return (
     <div className="navBarContainer">
@@ -39,7 +39,7 @@ const Navigation = props => {
         <FiChevronsRight />
       </div>
       <div className="navBar" ref={mobButton}>
-        <div className="navBar__linksContainer">
+        <div>
           <NavLink
             to="/"
             activeClassName="activeNav"
@@ -48,6 +48,8 @@ const Navigation = props => {
           >
             Home
           </NavLink>
+        </div>
+        <div className="navBar__linksContainer">
           <NavLink
             to="/products"
             activeClassName="activeNav"
@@ -78,18 +80,21 @@ const Navigation = props => {
                 basketHover(e);
               }}
             >
-              <MdLibraryMusic />
-              <span>{props.basket.length}</span>
+              {props.basket.length}
             </p>
-            <div className="basketWidgetContainer" ref={basketIcon} onClick={e => {
-                  basketLeave(e);
-                  console.log('widget')
-                }}>
+            <div
+              className="basketWidgetContainer"
+              ref={basketIcon}
+              onClick={e => {
+                basketLeave(e);
+                console.log("widget");
+              }}
+            >
               <BasketWidget
                 className="basketWidget"
                 basket={props.basket}
-                onChange={()=>{
-                  console.log('updated basket')
+                onChange={() => {
+                  console.log("updated basket");
                   basketAnimation();
                 }}
               />

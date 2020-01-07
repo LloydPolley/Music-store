@@ -30,7 +30,7 @@ const ProductListItem = props => {
                     songTitle: props.product.songTitle,
                     artist: props.product.artist
                   })
-                );4
+                );
               }}
             />
             <FiPlay />

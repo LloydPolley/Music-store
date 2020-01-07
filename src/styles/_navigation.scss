@@ -3,7 +3,7 @@
         position: absolute;
         width: 100%;
         height: 100%;
-        background: #270c58;
+        background: rgb(50, 49, 63);
         top: 0;
         transition: .5s ease all;
         left: 100%;
@@ -40,7 +40,8 @@
 
 @media(min-width: 1000px) {
     .navBarContainer{
-        background-color: black;
+        background-color: rgb(50, 49, 63);
+        border-bottom: 1px solid rgb(60, 60, 63);
     }
     .navMobIcon {
         display: none;
@@ -62,6 +63,19 @@
         transform: translateY(-200%);
         transition: .5s ease all;
     }
+    .basketContainer{
+        border: 1px solid grey;
+        border-radius: 50px;
+        // padding: .5em;
+        color: grey;
+        padding: 0 .5em;
+
+        &:hover{
+            color: white;
+            border: 1px solid white;
+
+        }
+    }
     .show{
         opacity: 1;
         transform: none;
@@ -77,8 +91,17 @@
         box-sizing: border-box;
         position: relative;
 
+        >div{
+            width: 50%;
+        }
+
         a {
             color: rgb(170, 170, 170);
+            text-decoration: none;
+
+            &:hover{
+                color: white;
+            }
         }
         p{
             margin: 0;
