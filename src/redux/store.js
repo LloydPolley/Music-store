@@ -1,16 +1,19 @@
 import {createStore, combineReducers} from 'redux';
 import productsReducer from '../reducers/products';
 import basketReducer from '../reducers/basket';
+import audioPlayerReducer from '../reducers/audioPlayer';
 
 //Test imports
 // import {addProduct, populateProducts, removeProduct, editProduct} from '../actions/products';
 import {populateProducts} from '../actions/products';
 import {populateBasket} from '../actions/basket';
+import {loadTrack} from '../actions/audioPlayer';
 
 const store = createStore(
     combineReducers({
         products: productsReducer,
-        basket: basketReducer
+        basket: basketReducer,
+        audioPlayer: audioPlayerReducer
     })
 )
 
@@ -37,6 +40,7 @@ store.subscribe(()=>{
 
 
 store.dispatch(populateProducts(testProductsArray));
+store.dispatch(loadTrack('../musicFiles/sounds/Monolink-Swallow-(Tale Of Us Remix).mp3'));
 // store.dispatch(populateBasket(testBasketArray));
 // store.dispatch(addProduct(testProduct));
 // store.dispatch(removeProduct(2));
