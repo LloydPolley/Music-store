@@ -1,19 +1,23 @@
-import React, {useEffect} from "react";
+import React, { useEffect } from "react";
 import { FiPlay, FiPause } from "react-icons/fi";
-import song from '../audioPlayer/Monolink-Swallow-(Tale Of Us Remix).mp3'
+import song from "../audioPlayer/Monolink-Swallow-(Tale-Of-Us-Remix).mp3";
+
+// const getSong = (songTitle) => {
+//   return import( `../audioPlayer/${songTitle}`).then((data)=>{
+//     console.log(data, 'return promise')
+//   });
+// }
 
 const AudioPlayer = props => {
   const track = new Audio();
 
-  useEffect(()=>{
-    track.src = props.musicFile;
-  });
-  
+  useEffect(() => {}, []);
+
   const play = () => {
     track.play();
   };
   const pause = () => {
-    track.pause()
+    track.pause();
   };
 
   return (
@@ -27,11 +31,17 @@ const AudioPlayer = props => {
           <div id="seekBar">
             <div className="fill"></div>
           </div>
-          <audio controls><source src={song}></source></audio>
+          <audio controls>
+            <source
+              src={
+                "/src/components/audioPlayer/Monolink-Swallow-(Tale-Of-Us-Remix).mp3"
+              }
+            ></source>
+          </audio>
         </div>
         <div className="audioPlayerLayout__controls">
           <FiPlay onClick={play} />
-          <FiPause onClick={pause}/>
+          <FiPause onClick={pause} />
         </div>
       </div>
     </div>
