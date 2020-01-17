@@ -2,20 +2,38 @@ import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
 import { addProduct } from "../../actions/products";
 
+import {firebase, storage} from '../../firebase/firebase';
+
 const ProductForm = props => {
   const [songTitle, setSongTitle] = useState("");
   const [artist, setArtist] = useState("");
   const [price, setPrice] = useState("");
-  const [id, setId] = useState("");
+  const [audioFile, setAudioFile] = useState("");
+  const [artworkFile, setArtworkFile] = useState("");
 
   useEffect(() => {
+    //For editing
     if(props.product !== undefined){
       setSongTitle(props.product[0].songTitle);
       setArtist(props.product[0].artist);
       setPrice(props.product[0].price);
-      setId(props.product[0].id);
+      setAudioFile(props.product[0].audioFile);
+      setArtworkFile(props.product[0].artworkFile);
     }
   }, []);
+
+  const handleUploadAudio = (e) => {
+    let file = e.target.files[0];
+    var storageRef = storage.ref(`artists/${artist}/${songTitle}/audio/${file.name}`);
+    storageRef.put(file);
+    setAudioFile(`artists/${artist}/${songTitle}/audio/${file.name}`)
+  }
+  const handleUploadArtwork = (e) => {
+    let file = e.target.files[0];
+    var storageRef = storage.ref(`artists/${artist}/${songTitle}/artwork/${file.name}`);
+    storageRef.put(file);
+    setArtworkFile(`artists/${artist}/${songTitle}/artwork/${file.name}`)
+  }
 
   return (
     <form
@@ -25,17 +43,11 @@ const ProductForm = props => {
         setSongTitle("");
         setArtist("");
         setPrice("");
-        setId("");
-        // props.dispatch(addProduct({ id, songTitle, artist, price }));
         props.dispatch(
-          props.dispatchFunction({ id, songTitle, artist, price })
+          props.dispatchFunction({ songTitle, artist, price, audioFile, artworkFile })
         );
       }}
     >
-      <div className="productId">
-        <label>Product ID</label>
-        <input value={id} onChange={e => setId(parseInt(e.target.value))} />
-      </div>
       <div className="productName">
         <label>Song title</label>
         <input value={songTitle} onChange={e => setSongTitle(e.target.value)} />
@@ -49,6 +61,28 @@ const ProductForm = props => {
         <input
           value={price}
           onChange={e => setPrice(parseInt(e.target.value))}
+        />
+      </div>
+      <div className="productPrice">
+        <label>Audio file</label>
+        <input
+          type="file"
+          // value={audioFile}
+          accept='audio/*'
+          onChange={(e) => {
+            handleUploadAudio(e);
+          }}
+        />
+      </div>
+      <div className="productPrice">
+        <label>Artwork</label>
+        <input
+          type="file"
+          // value={artworkFile}
+          accept='image/*'
+          onChange={e => {
+            handleUploadArtwork(e);
+          }}
         />
       </div>
       <button>Add product</button>

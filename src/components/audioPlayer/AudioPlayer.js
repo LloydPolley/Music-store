@@ -31,13 +31,13 @@ const AudioPlayer = props => {
           <div id="seekBar">
             <div className="fill"></div>
           </div>
-          <audio controls>
+          {/* <audio controls>
             <source
               src={
                 "/src/components/audioPlayer/Monolink-Swallow-(Tale-Of-Us-Remix).mp3"
               }
             ></source>
-          </audio>
+          </audio> */}
         </div>
         <div className="audioPlayerLayout__controls">
           <FiPlay onClick={play} />

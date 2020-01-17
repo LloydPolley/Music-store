@@ -4,7 +4,7 @@ import ProductForm from "../../components/admin/ProductForm";
 
 import { connect } from "react-redux";
 import { removeProduct } from "../../actions/products";
-import { addProduct } from "../../actions/products";
+import { addProduct, fireAddProduct } from "../../actions/products";
 
 
 
@@ -17,7 +17,7 @@ const ProductAdder = props => {
   return (
     <div className="productAdder">
       <h1>Add product</h1>
-      <ProductForm dispatchFunction={addProduct}/>
+      <ProductForm dispatchFunction={fireAddProduct}/>
       <ProductList products={props.products} dispatch={props.dispatch} location="addProduct"/>
     </div>
   );

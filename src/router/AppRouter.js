@@ -17,7 +17,7 @@ import { connect } from "react-redux";
 
 
 const AppRouter = (props) => {
-    console.log(props.state.audioPlayer, 'approuter')
+    // console.log(props.state.audioPlayer, 'approuter')
   return (
 
   <BrowserRouter>
