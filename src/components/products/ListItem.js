@@ -1,14 +1,43 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { GoPlus } from "react-icons/go";
 import { FiPlay } from "react-icons/fi";
 import { addProductBasket } from "../../actions/basket";
+import { fireDownloadArtwork, fireDownloadAudio } from "../../actions/products";
+import { storage } from "../../firebase/firebase";
 
 // import image from props.product.artwork;
 
 const ProductListItem = props => {
+  const [artworkFile, setArtworkFile] = useState("");
+  const [audioFile, setAudioFile] = useState("");
+
+  // useEffect(() => {
+  //   console.log('props', props.product.artworkFilePath)
+  //   const p = props.product;
+  //   const storageRef = storage
+  //     .ref()
+  //     // .child(`/${p.artworkFilePath}`)
+  //     .child("/artists/1/1/artwork/fool.jpg")
+  //     .getDownloadURL()
+  //     .then((url) => {
+  //       // This can be downloaded directly:
+  //       var xhr = new XMLHttpRequest();
+  //       xhr.responseType = "blob";
+  //       xhr.onload = function(event) {
+  //         var blob = xhr.response;
+  //       };
+  //       xhr.open("GET", url);
+  //       // xhr.send();
+  //       setArtworkFile(url)
+  //     });
+  
+  //   fireDownloadArtwork(props.product.artworkFilePath);
+  //   // fireDownloadAudio(props.product.artworkFilePath);
+  // }, []);
+
   const artwork = {
-    backgroundImage: `url(${props.product.artwork})`
+    backgroundImage: `url(${artworkFile})`
   };
   return (
     <div className="productListItem" style={artwork}>

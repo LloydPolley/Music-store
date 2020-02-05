@@ -10,7 +10,7 @@ const Navigation = props => {
   const basketIcon = useRef(null);
 
   const openMobMenu = e => {
-    console.log("menu clicked");
+    // console.log("menu clicked");
     mobButton.current.classList.toggle("show");
     // this.menu = React.createRef();
   };
@@ -23,7 +23,7 @@ const Navigation = props => {
   };
   const basketLeave = e => {
     basketIcon.current.classList = "basketWidgetContainer";
-    console.log(basketIcon);
+    // console.log(basketIcon);
   };
 
   const basketAnimation = e => {

@@ -3,7 +3,7 @@ import "./App.scss";
 import AppRouter from "./router/AppRouter";
 import {Provider} from 'react-redux';
 import store from './redux/store';
-
+import {firePopulateProducts} from './actions/products';
 import './firebase/firebase';
 
 function App() {
@@ -13,5 +13,7 @@ function App() {
     </Provider>
   );
 }
+
+store.dispatch(firePopulateProducts());
 
 export default App;

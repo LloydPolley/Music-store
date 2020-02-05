@@ -37,7 +37,7 @@ const store = createStore(
 // const testProduct = {id: 4, productName: 'test product4', productPrice: 4};
 
 store.subscribe(()=>{
-    console.log('Sub', store.getState());
+    // console.log('Sub', store.getState());
 });
 
 

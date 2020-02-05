@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
-import { addProduct } from "../../actions/products";
+import { addProduct, fireUploadAudioFile, fireUploadArtwork } from "../../actions/products";
 
 import {firebase, storage} from '../../firebase/firebase';
 
@@ -10,6 +10,8 @@ const ProductForm = props => {
   const [price, setPrice] = useState("");
   const [audioFile, setAudioFile] = useState("");
   const [artworkFile, setArtworkFile] = useState("");
+  const [artworkFilePath, setArtworkFilePath] = useState("");
+  const [audioFilePath, setAudioFilePath] = useState("");
 
   useEffect(() => {
     //For editing
@@ -19,20 +21,17 @@ const ProductForm = props => {
       setPrice(props.product[0].price);
       setAudioFile(props.product[0].audioFile);
       setArtworkFile(props.product[0].artworkFile);
+      setArtworkFilePath(props.product[0].artworkFile);
+      setAudioFilePath(props.product[0].artworkFile);
     }
   }, []);
-
+ 
   const handleUploadAudio = (e) => {
-    let file = e.target.files[0];
-    var storageRef = storage.ref(`artists/${artist}/${songTitle}/audio/${file.name}`);
-    storageRef.put(file);
-    setAudioFile(`artists/${artist}/${songTitle}/audio/${file.name}`)
+    setAudioFilePath(`artists/${artist}/${songTitle}/audio/${e.target.files[0].name}`)
   }
   const handleUploadArtwork = (e) => {
-    let file = e.target.files[0];
-    var storageRef = storage.ref(`artists/${artist}/${songTitle}/artwork/${file.name}`);
-    storageRef.put(file);
-    setArtworkFile(`artists/${artist}/${songTitle}/artwork/${file.name}`)
+    console.log('uploaded')
+    setArtworkFilePath(`artists/${artist}/${songTitle}/artwork/${e.target.files[0].name}`)
   }
 
   return (
@@ -44,8 +43,9 @@ const ProductForm = props => {
         setArtist("");
         setPrice("");
         props.dispatch(
-          props.dispatchFunction({ songTitle, artist, price, audioFile, artworkFile })
+          props.dispatchFunction({ songTitle, artist, price, audioFilePath, artworkFilePath })
         );
+        // fireUploadAudioFile(artist, songTitle, audioFile)
       }}
     >
       <div className="productName">
@@ -67,7 +67,6 @@ const ProductForm = props => {
         <label>Audio file</label>
         <input
           type="file"
-          // value={audioFile}
           accept='audio/*'
           onChange={(e) => {
             handleUploadAudio(e);
@@ -78,7 +77,6 @@ const ProductForm = props => {
         <label>Artwork</label>
         <input
           type="file"
-          // value={artworkFile}
           accept='image/*'
           onChange={e => {
             handleUploadArtwork(e);
