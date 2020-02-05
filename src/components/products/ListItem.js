@@ -12,29 +12,29 @@ const ProductListItem = props => {
   const [artworkFile, setArtworkFile] = useState("");
   const [audioFile, setAudioFile] = useState("");
 
-  // useEffect(() => {
-  //   console.log('props', props.product.artworkFilePath)
-  //   const p = props.product;
-  //   const storageRef = storage
-  //     .ref()
-  //     // .child(`/${p.artworkFilePath}`)
-  //     .child("/artists/1/1/artwork/fool.jpg")
-  //     .getDownloadURL()
-  //     .then((url) => {
-  //       // This can be downloaded directly:
-  //       var xhr = new XMLHttpRequest();
-  //       xhr.responseType = "blob";
-  //       xhr.onload = function(event) {
-  //         var blob = xhr.response;
-  //       };
-  //       xhr.open("GET", url);
-  //       // xhr.send();
-  //       setArtworkFile(url)
-  //     });
+  useEffect(() => {
+    console.log('props', props.product.artworkFilePath)
+    const p = props.product;
+    const storageRef = storage
+      .ref()
+      // .child(`/${p.artworkFilePath}`)
+      .child("/artists/1/1/artwork/artbat.jpg")
+      .getDownloadURL()
+      .then((url) => {
+        // This can be downloaded directly:
+        var xhr = new XMLHttpRequest();
+        xhr.responseType = "blob";
+        xhr.onload = function(event) {
+          var blob = xhr.response;
+        };
+        xhr.open("GET", url);
+        // xhr.send();
+        setArtworkFile(url)
+      });
   
-  //   fireDownloadArtwork(props.product.artworkFilePath);
-  //   // fireDownloadAudio(props.product.artworkFilePath);
-  // }, []);
+    // fireDownloadArtwork(props.product.artworkFilePath);
+    // fireDownloadAudio(props.product.artworkFilePath);
+  }, []);
 
   const artwork = {
     backgroundImage: `url(${artworkFile})`
