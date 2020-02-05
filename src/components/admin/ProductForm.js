@@ -30,30 +30,29 @@ const ProductForm = props => {
     }
   }, []);
 
-  // const handleUploadAudio = (e) => {
-  //   setAudioFilePath(`artists/${artist}/${songTitle}/audio/${e.target.files[0].name}`)
-  // }
-  // const handleUploadArtwork = (e) => {
-  //   console.log('uploaded')
-  //   setArtworkFilePath(`artists/${artist}/${songTitle}/artwork/${e.target.files[0].name}`)
-  // }
-  const handleUploadAudio = e => {
-    let file = e.target.files[0];
-    var storageRef = storage.ref(
-      `artists/${artist}/${songTitle}/audio/${file.name}`
-    );
-    storageRef.put(file);
-    setAudioFile(`artists/${artist}/${songTitle}/audio/${file.name}`);
-  };
-  const handleUploadArtwork = e => {
-    let file = e.target.files[0];
-    var storageRef = storage.ref(
-      `artists/${artist}/${songTitle}/artwork/${file.name}`
-    );
-    storageRef.put(file);
-    setArtworkFile(`artists/${artist}/${songTitle}/artwork/${file.name}`);
-    console.log('artwork frran')
-  };
+  const handleUploadAudio = (e) => {
+    setAudioFilePath(`artists/${artist}/${songTitle}/audio/${e.target.files[0].name}`)
+  }
+  const handleUploadArtwork = (e) => {
+    console.log('uploaded')
+    setArtworkFilePath(`artists/${artist}/${songTitle}/artwork/${e.target.files[0].name}`)
+  }
+  // const handleUploadAudio = e => {
+  //   let file = e.target.files[0];
+  //   var storageRef = storage.ref(
+  //     `artists/${artist}/${songTitle}/audio/${file.name}`
+  //   );
+  //   storageRef.put(file);
+  //   setAudioFile(`artists/${artist}/${songTitle}/audio/${file.name}`);
+  // };
+  // const handleUploadArtwork = e => {
+  //   let file = e.target.files[0];
+  //   var storageRef = storage.ref(
+  //     `artists/${artist}/${songTitle}/artwork/${file.name}`
+  //   );
+  //   storageRef.put(file);
+  //   setArtworkFile(`artists/${artist}/${songTitle}/artwork/${file.name}`);
+  // };
 
   return (
     <form
