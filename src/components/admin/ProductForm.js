@@ -30,29 +30,29 @@ const ProductForm = props => {
     }
   }, []);
 
-  const handleUploadAudio = (e) => {
-    setAudioFilePath(`artists/${artist}/${songTitle}/audio/${e.target.files[0].name}`)
-  }
-  const handleUploadArtwork = (e) => {
-    console.log('uploaded')
-    setArtworkFilePath(`artists/${artist}/${songTitle}/artwork/${e.target.files[0].name}`)
-  }
-  // const handleUploadAudio = e => {
-  //   let file = e.target.files[0];
-  //   var storageRef = storage.ref(
-  //     `artists/${artist}/${songTitle}/audio/${file.name}`
-  //   );
-  //   storageRef.put(file);
-  //   setAudioFile(`artists/${artist}/${songTitle}/audio/${file.name}`);
-  // };
-  // const handleUploadArtwork = e => {
-  //   let file = e.target.files[0];
-  //   var storageRef = storage.ref(
-  //     `artists/${artist}/${songTitle}/artwork/${file.name}`
-  //   );
-  //   storageRef.put(file);
-  //   setArtworkFile(`artists/${artist}/${songTitle}/artwork/${file.name}`);
-  // };
+  // const handleUploadAudio = (e) => {
+  //   setAudioFilePath(`artists/${artist}/${songTitle}/audio/${e.target.files[0].name}`)
+  // }
+  // const handleUploadArtwork = (e) => {
+  //   console.log('uploaded')
+  //   setArtworkFilePath(`artists/${artist}/${songTitle}/artwork/${e.target.files[0].name}`)
+  // }
+  const handleUploadAudio = e => {
+    let file = e.target.files[0];
+    setAudioFilePath(`artists/${artist}/${songTitle}/audio/${file.name}`);
+    var storageRef = storage.ref(
+      `artists/${artist}/${songTitle}/audio/${file.name}`
+    );
+    storageRef.put(file);
+  };
+  const handleUploadArtwork = e => {
+    let file = e.target.files[0];
+    setArtworkFilePath(`artists/${artist}/${songTitle}/artwork/${file.name}`);
+    var storageRef = storage.ref(
+      `artists/${artist}/${songTitle}/artwork/${file.name}`
+    );
+    storageRef.put(file);
+  };
 
   return (
     <form
@@ -62,7 +62,7 @@ const ProductForm = props => {
         setSongTitle("");
         setArtist("");
         setPrice("");
-        console.log(audioFilePath, artworkFilePath)
+        console.log(audioFilePath, artworkFilePath);
         props.dispatch(
           props.dispatchFunction({
             songTitle,
@@ -73,6 +73,7 @@ const ProductForm = props => {
           })
         );
         // fireUploadAudioFile(artist, songTitle, audioFile)
+        // fireUploadArtwork(artist, songTitle, artworkFile)
       }}
     >
       <div className="productName">

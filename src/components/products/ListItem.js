@@ -17,8 +17,8 @@ const ProductListItem = props => {
     const p = props.product;
     const storageRef = storage
       .ref()
-      // .child(`/${p.artworkFilePath}`)
-      .child("/artists/1/1/artwork/artbat.jpg")
+      .child(`/${p.artworkFilePath}`)
+      // .child("/artists/test/test/artwork/fool.jpg")
       .getDownloadURL()
       .then((url) => {
         // This can be downloaded directly:

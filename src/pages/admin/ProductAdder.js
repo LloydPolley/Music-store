@@ -18,7 +18,7 @@ const ProductAdder = props => {
     <div className="productAdder">
       <h1>Add product</h1>
       <ProductForm dispatchFunction={fireAddProduct}/>
-      <ProductList products={props.products} dispatch={props.dispatch} location="addProduct"/>
+      {/* <ProductList products={props.products} dispatch={props.dispatch} location="addProduct"/> */}
     </div>
   );
 };

@@ -80,6 +80,7 @@ export const fireUploadArtwork = (artist, songTitle, artwork) => {
       `artists/${artist}/${songTitle}/${artwork.name}`
     );
     storageRef.put(artwork);
+    console.log('uploade artwork')
   };
 };
 
