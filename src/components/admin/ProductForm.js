@@ -52,6 +52,7 @@ const ProductForm = props => {
     );
     storageRef.put(file);
     setArtworkFile(`artists/${artist}/${songTitle}/artwork/${file.name}`);
+    console.log('artwork frran')
   };
 
   return (
@@ -62,6 +63,7 @@ const ProductForm = props => {
         setSongTitle("");
         setArtist("");
         setPrice("");
+        console.log(audioFilePath, artworkFilePath)
         props.dispatch(
           props.dispatchFunction({
             songTitle,

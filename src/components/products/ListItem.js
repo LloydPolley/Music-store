@@ -13,7 +13,7 @@ const ProductListItem = props => {
   const [audioFile, setAudioFile] = useState("");
 
   useEffect(() => {
-    console.log('props', props.product.artworkFilePath)
+    console.log('props', props.product)
     const p = props.product;
     const storageRef = storage
       .ref()
