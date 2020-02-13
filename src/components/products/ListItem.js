@@ -5,36 +5,29 @@ import { FiPlay } from "react-icons/fi";
 import { addProductBasket } from "../../actions/basket";
 import { fireDownloadArtwork, fireDownloadAudio } from "../../actions/products";
 import { storage } from "../../firebase/firebase";
+import { loadTrack } from "../../actions/audioPlayer";
+import { connect } from "react-redux";
 
-// import image from props.product.artwork;
+import { downloadAudio, downloadArtwork } from "../../actions/download";
 
 const ProductListItem = props => {
   const [artworkFile, setArtworkFile] = useState("");
   const [audioFile, setAudioFile] = useState("");
+  const p = props.product;
 
   useEffect(() => {
-    console.log('props', props.product)
-    const p = props.product;
-    const storageRef = storage
-      .ref()
-      .child(`/${p.artworkFilePath}`)
-      // .child("/artists/test/test/artwork/fool.jpg")
-      .getDownloadURL()
-      .then((url) => {
-        // This can be downloaded directly:
-        var xhr = new XMLHttpRequest();
-        xhr.responseType = "blob";
-        xhr.onload = function(event) {
-          var blob = xhr.response;
-        };
-        xhr.open("GET", url);
-        // xhr.send();
-        setArtworkFile(url)
-      });
-  
-    // fireDownloadArtwork(props.product.artworkFilePath);
-    // fireDownloadAudio(props.product.artworkFilePath);
+    const downloadArtwork = fireDownloadArtwork(p.artworkFilePath).then(url => {
+      setArtworkFile(url);
+    });
+    const downloadAudio = fireDownloadAudio(p.audioFilePath).then(url => {
+      setAudioFile(url);
+    });
   }, []);
+
+  const play = () => {
+    // console.log(p, audioFile, artworkFile);
+    props.dispatch(loadTrack({artist: p.artist, title: p.songTitle, audio: audioFile, artwork: artworkFile}));
+  };
 
   const artwork = {
     backgroundImage: `url(${artworkFile})`
@@ -62,7 +55,7 @@ const ProductListItem = props => {
                 );
               }}
             />
-            <FiPlay />
+            <FiPlay onClick={play} />
           </span>
         </div>
       </div>
@@ -70,4 +63,10 @@ const ProductListItem = props => {
   );
 };
 
-export default ProductListItem;
+const mapStateToProps = state => {
+  return {
+    // products: state.products
+  };
+};
+
+export default connect(mapStateToProps)(ProductListItem);

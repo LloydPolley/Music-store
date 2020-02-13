@@ -3,7 +3,7 @@ import React from 'react';
 
 const LoginPage = () => (
     <div className="loginPageContainer">
-        <h1>Login</h1>
+        <h1>Tracks</h1>
     </div>
 )
 

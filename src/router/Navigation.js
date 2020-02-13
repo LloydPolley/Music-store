@@ -64,7 +64,7 @@ const Navigation = props => {
             exact={true}
             onClick={closeMenu}
           >
-            Account
+            Likes
           </NavLink>
           <NavLink
             to="/addProduct"
@@ -72,7 +72,7 @@ const Navigation = props => {
             exact={true}
             onClick={closeMenu}
           >
-            Admin
+            Add
           </NavLink>
           <div className="basketContainer">
             <p

@@ -9,7 +9,7 @@ import ProductListingPage from '../pages/products/ProductListings';
 import ProductAdder from '../pages/admin/ProductAdder';
 import ProductEditor from "../pages/admin/ProductForm";
 import ProductPage from '../pages/products/ProductPage';
-import Footer from '../components/footer/Footer';
+// import Footer from '../components/footer/Footer';
 import AudioPlayer from "../components/audioPlayer/AudioPlayer";
 // import 
 import { connect } from "react-redux";
@@ -22,7 +22,7 @@ const AppRouter = (props) => {
 
   <BrowserRouter>
     <Navigation/>
-    <AudioPlayer musicFile={'../musicFiles/sounds/Monolink-Swallow-(Tale Of Us Remix).mp3'}/>
+    <AudioPlayer/>
     <div className='app'>
       <Switch>
         <Route path="/" component={HomePage} exact={true} />
@@ -33,7 +33,7 @@ const AppRouter = (props) => {
         <Route path='/addProduct/:id' component={ProductEditor}/>
         <Route path='/products/:id' component={ProductPage}/>
       </Switch>
-      <Footer/>
+      {/* <Footer/> */}
     </div>
   </BrowserRouter>
 )};

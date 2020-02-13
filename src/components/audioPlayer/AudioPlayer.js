@@ -1,51 +1,63 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { FiPlay, FiPause } from "react-icons/fi";
-// import song from "../audioPlayer/Monolink-Swallow-(Tale-Of-Us-Remix).mp3";
+import { connect } from "react-redux";
 
-// const getSong = (songTitle) => {
-//   return import( `../audioPlayer/${songTitle}`).then((data)=>{
-//     console.log(data, 'return promise')
-//   });
-// }
+let audioPlayer = new Audio();
 
 const AudioPlayer = props => {
-  const track = new Audio();
+  const [playing, setPlaying] = useState(false);
+  const [trackName, setTrack] = useState("Select");
+  const [artistName, setArtist] = useState("Track");
 
-  useEffect(() => {}, []);
+  useEffect(() => {
+    console.log(props.trackPlaying, "pp");
+    if (props.trackPlaying.length === undefined) {
+      audioPlayer.src = props.trackPlaying.audio;
+      setArtist(props.trackPlaying.artist);
+      setTrack(props.trackPlaying.title);
+      playAudioToggle();
+    }
+  }, [props.trackPlaying]);
 
-  const play = () => {
-    track.play();
+  const playAudioToggle = () => {
+    if (audioPlayer.paused) {
+      setPlaying(true);
+      audioPlayer.play().then(() => {
+        //success
+      });
+    } else {
+      setPlaying(false);
+      audioPlayer.pause();
+    }
   };
-  const pause = () => {
-    track.pause();
-  };
-
   return (
     <div className="audioPlayer loaded">
       <div className="audioPlayerLayout">
         <div className="audioPlayerLayout__info">
-          <p>Track Name</p>
-          <p>Artist</p>
+          <p>{trackName}</p>
+          <p>{artistName}</p>
         </div>
         <div className="audioPlayerLayout__progress">
           <div id="seekBar">
             <div className="fill"></div>
           </div>
-          {/* <audio controls>
-            <source
-              src={
-                "/src/components/audioPlayer/Monolink-Swallow-(Tale-Of-Us-Remix).mp3"
-              }
-            ></source>
-          </audio> */}
         </div>
         <div className="audioPlayerLayout__controls">
-          <FiPlay onClick={play} />
-          <FiPause onClick={pause} />
+          {!playing ? (
+            <FiPlay onClick={playAudioToggle} />
+          ) : (
+            <FiPause onClick={playAudioToggle} />
+          )}
         </div>
       </div>
     </div>
   );
 };
 
-export default AudioPlayer;
+const mapStateToProps = state => {
+  return {
+    trackPlaying: state.audioPlayer
+  };
+};
+
+export default connect(mapStateToProps)(AudioPlayer);

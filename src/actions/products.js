@@ -15,14 +15,14 @@ export const firePopulateProducts = () => {
         snapshot.forEach(snap => {
           const arrayArtists = Object.keys(snap.val()).map(i => snap.val()[i]);
           let value = snap.val();
-          let productsArray = []
+          let productsArray = [];
           for (let prop in value) {
             //spread out and push to array below
             // console.log(prop, value[prop]);
             products.push({
               id: prop,
               ...value[prop]
-            })
+            });
           }
         });
         // console.log(products)
@@ -64,36 +64,34 @@ export const removeProduct = id => ({
   id
 });
 
-//Admin form usage
+//UPLOADING
 export const fireUploadAudioFile = (artist, songTitle, audioFile) => {
-  return () => {
-    const storageRef = storage.ref(
-      `artists/${artist}/${songTitle}/${audioFile.name}`
-    );
-    storageRef.put(audioFile);
-  };
+  const storageRef = storage.ref(
+    `artists/${artist}/${songTitle}/audio/${audioFile.name}`
+  );
+  storageRef.put(audioFile);
 };
 
 export const fireUploadArtwork = (artist, songTitle, artwork) => {
-  return () => {
-    const storageRef = storage.ref(
-      `artists/${artist}/${songTitle}/${artwork.name}`
-    );
-    storageRef.put(artwork);
-    console.log('uploade artwork')
-  };
+  const storageRef = storage.ref(
+    `artists/${artist}/${songTitle}/artwork/${artwork.name}`
+  );
+  storageRef.put(artwork);
+  console.log("uploade artwork", artwork);
 };
 
+// //DOWNLOADING
+export const fireDownloadArtwork = url => {
+  return storage
+    .ref()
+    .child(`/${url}`)
+    .getDownloadURL();
+};
 
+export const fireDownloadAudio = url => {
+  return storage
+    .ref()
+    .child(`/${url}`)
+    .getDownloadURL();
+};
 
-export const fireDownloadArtwork = (url) => {
-  return () =>{
-    console.log('download artwork')
-  }
-}
-
-export const fireDownloadAudio = (url) => {
-  return () =>{
-    console.log('download audio')
-  }
-}

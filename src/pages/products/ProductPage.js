@@ -1,19 +1,32 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { fireDownloadArtwork, fireDownloadAudio } from "../../actions/products";
+
 import { connect } from "react-redux";
 // import { useState, useEffect } from "react";
 import { FiPlay, FiPause } from "react-icons/fi";
 import { addProductBasket } from "../../actions/basket";
-import {loadTrack} from '../../actions/audioPlayer';
+import { loadTrack } from "../../actions/audioPlayer";
 
 // import {}
 
 const ProductPage = props => {
-  console.log(props.stateProduct[0], 'q')
-  const playTrack = () => {
-   
-  }
-  const pauseTrack = () => {
-  }
+  console.log(props.stateProduct[0], "q");
+  const p = props.stateProduct[0]
+  const [artworkFile, setArtworkFile] = useState("");
+  const [audioFile, setAudioFile] = useState("");
+
+  useEffect(() => {
+    const downloadArtwork = fireDownloadArtwork(p.artworkFilePath).then(url => {
+      setArtworkFile(url);
+    });
+    const downloadAudio = fireDownloadAudio(p.audioFilePath).then(url => {
+      setAudioFile(url);
+    });
+  }, []);
+
+  
+  const playTrack = () => {};
+  const pauseTrack = () => {};
   return (
     <div className="productPage">
       <div className="hero">
@@ -21,8 +34,8 @@ const ProductPage = props => {
           <h1>{props.stateProduct[0].songTitle}</h1>
           <h2>{props.stateProduct[0].artist}</h2>
         </div>
-        <FiPlay className="media-controls" onClick={playTrack}/>
-        <FiPause className="media-controls" onClick={pauseTrack}/>
+        <FiPlay className="media-controls" onClick={playTrack} />
+        <FiPause className="media-controls" onClick={pauseTrack} />
         <img src={props.stateProduct[0].artwork} />
       </div>
 
@@ -46,7 +59,7 @@ const ProductPage = props => {
 const mapStateToProps = (state, props) => {
   const stateProduct = state.products.filter(product => {
     if (product.id === props.match.params.id) {
-      return {product};
+      return { product };
     }
   });
   return { stateProduct };
