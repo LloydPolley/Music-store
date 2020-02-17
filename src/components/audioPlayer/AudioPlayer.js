@@ -10,7 +10,7 @@ const AudioPlayer = props => {
   const [artistName, setArtist] = useState("Track");
 
   useEffect(() => {
-    console.log(props.trackPlaying, "pp");
+    // console.log(props.trackPlaying, "pp");
     if (props.trackPlaying.length === undefined) {
       audioPlayer.src = props.trackPlaying.audio;
       setArtist(props.trackPlaying.artist);

@@ -47,11 +47,7 @@ const ProductListItem = props => {
             <GoPlus
               onClick={() => {
                 props.dispatch(
-                  addProductBasket({
-                    id: props.product.id,
-                    songTitle: props.product.songTitle,
-                    artist: props.product.artist
-                  })
+                  addProductBasket(props.product)
                 );
               }}
             />

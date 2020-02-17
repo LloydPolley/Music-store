@@ -6,7 +6,7 @@ import ProductList from '../../components/products/ProductList';
 const ProductListingPage = props => {
   return (
     <div className="productListings">
-      <h1>Products/ProductListing</h1>
+      <h1>Tracks</h1>
       <ProductList products={props.products} dispatch={props.dispatch} location="products"/>
     </div>
   );

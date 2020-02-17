@@ -4,7 +4,6 @@ import ListItem from './ListItem';
 const ProductList = (props) => (
     
   <div className="productList">
-    <h1>Product List</h1>
     <div className="productListings__list">
       {props.products.map(product => {
         return (

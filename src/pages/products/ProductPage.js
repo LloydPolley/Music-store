@@ -3,15 +3,15 @@ import { fireDownloadArtwork, fireDownloadAudio } from "../../actions/products";
 
 import { connect } from "react-redux";
 // import { useState, useEffect } from "react";
-import { FiPlay, FiPause } from "react-icons/fi";
+import { FiPlay, FiPause, FiPlusCircle } from "react-icons/fi";
 import { addProductBasket } from "../../actions/basket";
 import { loadTrack } from "../../actions/audioPlayer";
 
 // import {}
 
 const ProductPage = props => {
-  console.log(props.stateProduct[0], "q");
-  const p = props.stateProduct[0]
+  // console.log(props.stateProduct[0], "q");
+  const p = props.stateProduct[0];
   const [artworkFile, setArtworkFile] = useState("");
   const [audioFile, setAudioFile] = useState("");
 
@@ -24,34 +24,42 @@ const ProductPage = props => {
     });
   }, []);
 
-  
-  const playTrack = () => {};
-  const pauseTrack = () => {};
+  const play = () => {
+    props.dispatch(
+      loadTrack({
+        artist: props.stateProduct[0].artist,
+        title: props.stateProduct[0].songTitle,
+        audio: audioFile,
+        artwork: artworkFile
+      })
+    );
+  };
+
   return (
     <div className="productPage">
       <div className="hero">
-        <div>
-          <h1>{props.stateProduct[0].songTitle}</h1>
-          <h2>{props.stateProduct[0].artist}</h2>
+        <div className="productInfo">
+          <div className="productInfo__top">
+            <h1>{props.stateProduct[0].songTitle}</h1>
+            <p>{props.stateProduct[0].artist}</p>
+          </div>
+          <div className="productInfo__bottom">
+            <FiPlusCircle
+              onClick={() => {
+                props.dispatch(
+                  addProductBasket({
+                    id: props.stateProduct[0].id,
+                    songTitle: props.stateProduct[0].songTitle,
+                    artist: props.stateProduct[0].artist
+                  })
+                );
+              }}
+            />
+            <FiPlay className="media-controls"  onClick={play} />
+          </div>
         </div>
-        <FiPlay className="media-controls" onClick={playTrack} />
-        <FiPause className="media-controls" onClick={pauseTrack} />
-        <img src={props.stateProduct[0].artwork} />
+        <img src={artworkFile} />
       </div>
-
-      <button
-        onClick={() => {
-          props.dispatch(
-            addProductBasket({
-              id: props.stateProduct[0].id,
-              songTitle: props.stateProduct[0].songTitle,
-              artist: props.stateProduct[0].artist
-            })
-          );
-        }}
-      >
-        Add
-      </button>
     </div>
   );
 };

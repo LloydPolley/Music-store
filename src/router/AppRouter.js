@@ -3,7 +3,7 @@ import { Route, Switch, BrowserRouter } from "react-router-dom";
 
 import Navigation from './Navigation';
 import HomePage from "../pages/HomePage";
-import Account from '../pages/userInfo/Login';
+import Likes from '../pages/userInfo/Likes';
 import Basket from '../pages/basket/Basket';
 import ProductListingPage from '../pages/products/ProductListings';
 import ProductAdder from '../pages/admin/ProductAdder';
@@ -25,10 +25,10 @@ const AppRouter = (props) => {
     <AudioPlayer/>
     <div className='app'>
       <Switch>
-        <Route path="/" component={HomePage} exact={true} />
-        <Route path="/products" component={ProductListingPage} exact={true} />
+        {/* <Route path="/" component={HomePage} exact={true} /> */}
+        <Route path="/" component={ProductListingPage} exact={true} />
         <Route path="/basket" component={Basket} exact={true} />
-        <Route path="/account" component={Account} exact={true} />
+        <Route path="/likes" component={Likes} exact={true} />
         <Route path="/addProduct" component={ProductAdder} exact={true} />
         <Route path='/addProduct/:id' component={ProductEditor}/>
         <Route path='/products/:id' component={ProductPage}/>

@@ -1,6 +1,6 @@
 import React, { useRef } from "react";
 import { NavLink } from "react-router-dom";
-import { MdLibraryMusic } from "react-icons/md";
+// import { MdLibraryMusic } from "react-icons/md";
 import { FiChevronsRight } from "react-icons/fi";
 import { connect } from "react-redux";
 import BasketWidget from "../components/basket/Widget";
@@ -50,16 +50,16 @@ const Navigation = props => {
           </NavLink>
         </div>
         <div className="navBar__linksContainer">
-          <NavLink
+          {/* <NavLink
             to="/products"
             activeClassName="activeNav"
             exact={true}
             onClick={closeMenu}
           >
-            Products
-          </NavLink>
+            Tracks
+          </NavLink> */}
           <NavLink
-            to="/account"
+            to="/likes"
             activeClassName="activeNav"
             exact={true}
             onClick={closeMenu}
@@ -74,7 +74,7 @@ const Navigation = props => {
           >
             Add
           </NavLink>
-          <div className="basketContainer">
+          {/* <div className="basketContainer">
             <p
               onClick={e => {
                 basketHover(e);
@@ -99,7 +99,7 @@ const Navigation = props => {
                 }}
               />
             </div>
-          </div>
+          </div> */}
         </div>
       </div>
     </div>

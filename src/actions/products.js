@@ -13,9 +13,9 @@ export const firePopulateProducts = () => {
       .then(snapshot => {
         const products = [];
         snapshot.forEach(snap => {
-          const arrayArtists = Object.keys(snap.val()).map(i => snap.val()[i]);
+          // const arrayArtists = Object.keys(snap.val()).map(i => snap.val()[i]);
           let value = snap.val();
-          let productsArray = [];
+          // let productsArray = [];
           for (let prop in value) {
             //spread out and push to array below
             // console.log(prop, value[prop]);

@@ -1,5 +1,5 @@
 import React from "react";
-import ProductList from "../../components/products/ProductList";
+// import ProductList from "../../components/products/ProductList";
 import ProductForm from "../../components/admin/ProductForm";
 
 import { connect } from "react-redux";
