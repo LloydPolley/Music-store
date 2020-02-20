@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { GoPlus } from "react-icons/go";
 import { FiPlay } from "react-icons/fi";
+import { MdFavoriteBorder, MdFavorite } from "react-icons/md";
 import { addProductBasket } from "../../actions/basket";
 import { fireDownloadArtwork, fireDownloadAudio } from "../../actions/products";
 import { storage } from "../../firebase/firebase";
@@ -13,6 +14,7 @@ import { downloadAudio, downloadArtwork } from "../../actions/download";
 const ProductListItem = props => {
   const [artworkFile, setArtworkFile] = useState("");
   const [audioFile, setAudioFile] = useState("");
+  const [liked, setLiked] = useState(false);
   const p = props.product;
 
   useEffect(() => {
@@ -25,8 +27,14 @@ const ProductListItem = props => {
   }, []);
 
   const play = () => {
-    // console.log(p, audioFile, artworkFile);
-    props.dispatch(loadTrack({artist: p.artist, title: p.songTitle, audio: audioFile, artwork: artworkFile}));
+    props.dispatch(
+      loadTrack({
+        artist: p.artist,
+        title: p.songTitle,
+        audio: audioFile,
+        artwork: artworkFile
+      })
+    );
   };
 
   const artwork = {
@@ -44,13 +52,17 @@ const ProductListItem = props => {
             <p>{props.product.artist}</p>
           </Link>
           <span>
-            <GoPlus
-              onClick={() => {
-                props.dispatch(
-                  addProductBasket(props.product)
-                );
-              }}
-            />
+            {!liked ? (
+              <MdFavoriteBorder
+                onClick={() => {
+                  console.log(props, 'liked state')
+                  props.dispatch(addProductBasket(props.product));
+                  setLiked(true);
+                }}
+              />
+            ) : (
+              <MdFavorite/>
+            )}
             <FiPlay onClick={play} />
           </span>
         </div>

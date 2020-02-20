@@ -2,7 +2,7 @@ import React from "react";
 import ListItemSmall from "./ListItemSmall";
 
 const ProductListSmall = props => {
-  console.log(props, 'small')
+  // console.log(props, 'small')
   return (
     <div className="productListSmall">
       <div className="productListingSmall__list">

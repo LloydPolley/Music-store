@@ -13,17 +13,20 @@ import { downloadAudio, downloadArtwork } from "../../actions/download";
 const ListItemsSmall = props => {
   const [artworkFile, setArtworkFile] = useState("");
   const [audioFile, setAudioFile] = useState("");
-  const p = props.product;
-  console.log(props.like.songTitle, "small-list");
+  const p = props.like;
+  // console.log(props.like, "small-list");
 
-  // useEffect(() => {
-  //   const downloadArtwork = fireDownloadArtwork(p.artworkFilePath).then(url => {
-  //     setArtworkFile(url);
-  //   });
-  //   const downloadAudio = fireDownloadAudio(p.audioFilePath).then(url => {
-  //     setAudioFile(url);
-  //   });
-  // }, []);
+
+  // console.log(p, 'p')
+
+  useEffect(() => {
+    const downloadArtwork = fireDownloadArtwork(p.artworkFilePath).then(url => {
+      setArtworkFile(url);
+    });
+    const downloadAudio = fireDownloadAudio(p.audioFilePath).then(url => {
+      setAudioFile(url);
+    });
+  }, []);
 
   const play = () => {
     // console.log(p, audioFile, artworkFile);
@@ -37,14 +40,13 @@ const ListItemsSmall = props => {
     );
   };
 
-  // const artwork = {
-  //   backgroundImage: `url(${artworkFile})`
-  // };
   return (
     <div className="ListItemsSmall" key={props.like.id}>
       <div className="">
         <h1>{props.like.songTitle}</h1>
         <p>{props.like.artist}</p>
+        <p onClick={play}>Play Button</p>
+        <img src={artworkFile}/>
       </div>
       {/* <div className="layer" to={`${props.location}/${props.product.id}`}>
         <div className="">
