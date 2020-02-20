@@ -16,7 +16,6 @@ const ListItemsSmall = props => {
   const p = props.like;
   // console.log(props.like, "small-list");
 
-
   // console.log(p, 'p')
 
   useEffect(() => {
@@ -42,11 +41,17 @@ const ListItemsSmall = props => {
 
   return (
     <div className="ListItemsSmall" key={props.like.id}>
-      <div className="">
-        <h1>{props.like.songTitle}</h1>
-        <p>{props.like.artist}</p>
-        <p onClick={play}>Play Button</p>
-        <img src={artworkFile}/>
+      <div className="layer">
+        <div className="layer__left">
+          <div>
+            <h1>{props.like.songTitle}</h1>
+            <h2>{props.like.artist}</h2>
+          </div>
+          <div>
+            <FiPlay onClick={play} />
+          </div>
+        </div>
+        <img src={artworkFile} />
       </div>
       {/* <div className="layer" to={`${props.location}/${props.product.id}`}>
         <div className="">

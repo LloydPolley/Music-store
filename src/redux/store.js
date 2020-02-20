@@ -36,9 +36,9 @@ const store = createStore(
 
 // const testProduct = {id: 4, productName: 'test product4', productPrice: 4};
 
-store.subscribe(()=>{
-    console.log('Sub', store.getState());
-});
+// store.subscribe(()=>{
+//     console.log('Sub', store.getState());
+// });
 
 
 // store.dispatch(populateProducts(testProductsArray));

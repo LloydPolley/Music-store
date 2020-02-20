@@ -67,14 +67,16 @@ export const removeProduct = id => ({
 //UPLOADING
 export const fireUploadAudioFile = (artist, songTitle, audioFile) => {
   const storageRef = storage.ref(
-    `artists/${artist}/${songTitle}/audio/${audioFile.name}`
+    `artists/audio/${audioFile.name}`
+    // `artists/${artist}/${songTitle}/audio/${audioFile.name}`
   );
   storageRef.put(audioFile);
 };
 
 export const fireUploadArtwork = (artist, songTitle, artwork) => {
   const storageRef = storage.ref(
-    `artists/${artist}/${songTitle}/artwork/${artwork.name}`
+    `artists/artwork/${artwork.name}`
+    // `artists/${artist}/${songTitle}/artwork/${artwork.name}`
   );
   storageRef.put(artwork);
   console.log("uploade artwork", artwork);

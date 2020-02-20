@@ -72,7 +72,7 @@ const Navigation = props => {
             exact={true}
             onClick={closeMenu}
           >
-            Add
+            Upload
           </NavLink>
           {/* <div className="basketContainer">
             <p

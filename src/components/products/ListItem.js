@@ -50,7 +50,7 @@ const ProductListItem = props => {
         <div className="productListItem__bottom">
           <Link to={`product/${props.product.id}`}>
             <p>{props.product.artist}</p>
-          </Link>
+          </Link> 
           <span>
             {!liked ? (
               <MdFavoriteBorder

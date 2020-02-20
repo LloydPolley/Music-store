@@ -1,17 +1,21 @@
 .ListItemsSmall{
     color: white;
+    margin-bottom: 1em;
 
     .layer{
         display: flex;
         flex-direction: row;
         justify-content: space-between;
-    }
 
+        &__left{
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+    }
     img{
-        width: 25%;
+        width: 18%;
     }
-    
-
     a{
         color: white;
     }

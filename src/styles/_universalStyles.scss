@@ -7,3 +7,18 @@ input{
         color: white;
     }
 }
+
+.cta{
+    &__blue{
+        border: none;
+        border-radius: 5px;
+        padding: 1em;
+        background-color: rgb(7, 7, 27);
+        transition: .2s ease all;
+
+        &:hover{
+            background-color: white;
+            color: black;
+        }
+    }
+}
