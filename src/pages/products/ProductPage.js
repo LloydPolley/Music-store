@@ -11,21 +11,23 @@ import { loadTrack } from "../../actions/audioPlayer";
 // import {}
 
 const ProductPage = props => {
-  // console.log(props.stateProduct[0], "q");
   const p = props.stateProduct[0];
-  console.log(p, 'd')
   const [artworkFile, setArtworkFile] = useState("");
   const [audioFile, setAudioFile] = useState("");
   const [liked, setLiked] = useState(false);
 
   useEffect(() => {
-    const downloadArtwork = fireDownloadArtwork(p.artworkFilePath).then(url => {
-      setArtworkFile(url);
-    });
-    const downloadAudio = fireDownloadAudio(p.audioFilePath).then(url => {
-      setAudioFile(url);
-    });
-  }, []);
+    if (p !== undefined) {
+      const downloadArtwork = fireDownloadArtwork(p.artworkFilePath).then(
+        url => {
+          setArtworkFile(url);
+        }
+      );
+      const downloadAudio = fireDownloadAudio(p.audioFilePath).then(url => {
+        setAudioFile(url);
+      });
+    }
+  }, [p]);
 
   const play = () => {
     props.dispatch(
@@ -40,29 +42,33 @@ const ProductPage = props => {
 
   return (
     <div className="productPage">
-      <div className="hero">
-        <div className="productInfo">
-          <div className="productInfo__top">
-            <h1>{props.stateProduct[0].songTitle}</h1>
-            <p>{props.stateProduct[0].artist}</p>
+      {p === undefined ? (
+        <h1>Loading</h1>
+      ) : (
+        <div className="hero">
+          <div className="productInfo">
+            <div className="productInfo__top">
+              <h1>{props.stateProduct[0].songTitle}</h1>
+              <p>{props.stateProduct[0].artist}</p>
+            </div>
+            <div className="productInfo__bottom">
+              {!liked ? (
+                <MdFavoriteBorder
+                  onClick={() => {
+                    console.log(props, "liked state");
+                    props.dispatch(addProductBasket(p));
+                    setLiked(true);
+                  }}
+                />
+              ) : (
+                <MdFavorite />
+              )}
+              <FiPlay className="media-controls" onClick={play} />
+            </div>
           </div>
-          <div className="productInfo__bottom">
-            {!liked ? (
-              <MdFavoriteBorder
-                onClick={() => {
-                  console.log(props, "liked state");
-                  props.dispatch(addProductBasket(p));
-                  setLiked(true);
-                }}
-              />
-            ) : (
-              <MdFavorite />
-            )}
-            <FiPlay className="media-controls" onClick={play} />
-          </div>
+          <img src={artworkFile} />
         </div>
-        <img src={artworkFile} />
-      </div>
+      )}
     </div>
   );
 };

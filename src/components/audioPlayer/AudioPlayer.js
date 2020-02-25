@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useRef } from "react";
-import { FiPlay, FiPause } from "react-icons/fi";
+import { FiPlay, FiPause, FiSkipBack } from "react-icons/fi";
 import { connect } from "react-redux";
 
 let audioPlayer = new Audio();
@@ -13,6 +13,9 @@ const AudioPlayer = props => {
   const [artistName, setArtist] = useState("Track");
   const [currentTime, setCurrentTime] = useState(0);
 
+  const [seek, setSeek] = useState(0);
+  const [volume, setVolume] = useState(100);
+
   const refFillBar = useRef(null);
 
   useEffect(() => {
@@ -22,7 +25,7 @@ const AudioPlayer = props => {
       setArtist(props.trackPlaying.artist);
       setTrack(props.trackPlaying.title);
       playAudioToggle();
-      seekBarHandler();
+      // seekBarHandler();
     }
   }, [props.trackPlaying]);
 
@@ -30,13 +33,7 @@ const AudioPlayer = props => {
     width: `${currentTime}%`
   };
 
-  const seekBarHandler = () => {
-    let position = audioPlayer.currentTime;
-    audioPlayer.addEventListener("timeupdate", () => {
-      console.log((audioPlayer.currentTime / audioPlayer.duration) * 100);
-      setCurrentTime(audioPlayer.currentTime);
-    });
-  };
+ 
 
   const playAudioToggle = () => {
     if (audioPlayer.paused) {
@@ -49,6 +46,39 @@ const AudioPlayer = props => {
       audioPlayer.pause();
     }
   };
+  const restartHandle = () => {
+    audioPlayer.currentTime = 0;
+    audioPlayer.volume = 0.5;
+  };
+
+
+
+
+  const seekTouchHandler = e => {
+    setSeek(e.target.value);
+    audioPlayer.currentTime = audioPlayer.duration * (e.target.value / 100);
+  };
+   const seekBarTimeUpdateHandler = () => {
+    let position = audioPlayer.currentTime;
+    audioPlayer.addEventListener("timeupdate", () => {
+      // console.log((audioPlayer.currentTime / audioPlayer.duration) * 100);
+      setCurrentTime(audioPlayer.currentTime);
+      // console.log(audioPlayer.duration / 100)
+    });
+  };
+
+ 
+  //Volume handler slider
+  const volumeHandler = e => {
+    if (e.target.value / 100 === 0.01) {
+      setVolume(e.target.value);
+      audioPlayer.volume = 0;
+    } else {
+      setVolume(e.target.value);
+      audioPlayer.volume = volume / 100;
+    }
+  };
+
   return (
     <div className="audioPlayer loaded">
       <div className="audioPlayerLayout">
@@ -57,11 +87,29 @@ const AudioPlayer = props => {
           <p>{artistName}</p>
         </div>
         <div className="audioPlayerLayout__progress">
-          <div id="seekBar">
-            <div style={fillTime} ref={refFillBar} className="fill"></div>
-          </div>
+          <input
+            type="range"
+            min="0"
+            max="100"
+            onChange={seekTouchHandler}
+            value={seek}
+            step="1"
+            className="slider"
+            id="seekSlider"
+          />
         </div>
         <div className="audioPlayerLayout__controls">
+          <input
+            type="range"
+            min="0"
+            max="100"
+            onChange={volumeHandler}
+            value={volume}
+            step="1"
+            className="slider"
+            id="volumeSlider"
+          />
+          <FiSkipBack onClick={restartHandle} />
           {!playing ? (
             <FiPlay onClick={playAudioToggle} />
           ) : (

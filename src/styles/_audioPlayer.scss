@@ -1,9 +1,10 @@
 
 
 .audioPlayer{
+    z-index: 3;
     position: fixed;
     bottom: 0%;
-    width: 100%;
+    width: 100vw;
     background-color: #1b1a22;
     transition: 1s ease all;
     transform: translatey(100%);
@@ -19,7 +20,8 @@
 
 .audioPlayerLayout{
     display: flex;
-    width: 80%;
+    width: 90%;
+    max-width: 1200px;
     margin: 0 auto;
     justify-content: space-between;
 
@@ -43,7 +45,8 @@
 }
 
 #seekBar{
-    width: 500px;
+    width: 50vw;
+    // max-width: 500px;
     color: white;
     height: 5px;
     background-color: grey;
