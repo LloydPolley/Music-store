@@ -10,7 +10,7 @@ const Navigation = props => {
   const basketIcon = useRef(null);
 
   const openMobMenu = e => {
-    // console.log("menu clicked");
+    console.log("menu clicked");
     mobButton.current.classList.toggle("show");
     // this.menu = React.createRef();
   };
@@ -46,18 +46,10 @@ const Navigation = props => {
             exact={true}
             onClick={closeMenu}
           >
-            Home
+            TrackSrc
           </NavLink>
         </div>
         <div className="navBar__linksContainer">
-          {/* <NavLink
-            to="/products"
-            activeClassName="activeNav"
-            exact={true}
-            onClick={closeMenu}
-          >
-            Tracks
-          </NavLink> */}
           <NavLink
             to="/likes"
             activeClassName="activeNav"

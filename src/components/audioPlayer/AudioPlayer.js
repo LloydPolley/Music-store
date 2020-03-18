@@ -11,7 +11,6 @@ const AudioPlayer = props => {
   const [playing, setPlaying] = useState(false);
   const [trackName, setTrack] = useState("Select");
   const [artistName, setArtist] = useState("Track");
-  const [currentTime, setCurrentTime] = useState(0);
 
   const [seek, setSeek] = useState(0);
   const [volume, setVolume] = useState(100);
@@ -25,25 +24,27 @@ const AudioPlayer = props => {
       setArtist(props.trackPlaying.artist);
       setTrack(props.trackPlaying.title);
       playAudioToggle();
-      // seekBarHandler();
+      seekBarTimeUpdate();
+      // console.log("running");
     }
   }, [props.trackPlaying]);
 
-  const fillTime = {
-    width: `${currentTime}%`
-  };
-
- 
+  // const fillTime = {
+  //   width: `${currentTime}%`
+  // };
 
   const playAudioToggle = () => {
-    if (audioPlayer.paused) {
-      setPlaying(true);
-      audioPlayer.play().then(() => {
-        //success
-      });
-    } else {
-      setPlaying(false);
-      audioPlayer.pause();
+    // console.log(audioPlayer.src);
+    if (audioPlayer.src !== "") {
+      if (audioPlayer.paused) {
+        setPlaying(true);
+        audioPlayer.play().then(() => {
+          //success
+        });
+      } else {
+        setPlaying(false);
+        audioPlayer.pause();
+      }
     }
   };
   const restartHandle = () => {
@@ -51,23 +52,17 @@ const AudioPlayer = props => {
     audioPlayer.volume = 0.5;
   };
 
-
-
-
   const seekTouchHandler = e => {
     setSeek(e.target.value);
     audioPlayer.currentTime = audioPlayer.duration * (e.target.value / 100);
   };
-   const seekBarTimeUpdateHandler = () => {
+  const seekBarTimeUpdate = () => {
     let position = audioPlayer.currentTime;
     audioPlayer.addEventListener("timeupdate", () => {
-      // console.log((audioPlayer.currentTime / audioPlayer.duration) * 100);
-      setCurrentTime(audioPlayer.currentTime);
-      // console.log(audioPlayer.duration / 100)
+      setSeek((audioPlayer.currentTime / audioPlayer.duration) * 100);
     });
   };
 
- 
   //Volume handler slider
   const volumeHandler = e => {
     if (e.target.value / 100 === 0.01) {
@@ -93,12 +88,18 @@ const AudioPlayer = props => {
             max="100"
             onChange={seekTouchHandler}
             value={seek}
-            step="1"
+            step="0.01"
             className="slider"
-            id="seekSlider"
+            id="seekBar"
           />
         </div>
         <div className="audioPlayerLayout__controls">
+          <FiSkipBack onClick={restartHandle} />
+          {!playing ? (
+            <FiPlay onClick={playAudioToggle} />
+          ) : (
+            <FiPause onClick={playAudioToggle} />
+          )}
           <input
             type="range"
             min="0"
@@ -109,12 +110,6 @@ const AudioPlayer = props => {
             className="slider"
             id="volumeSlider"
           />
-          <FiSkipBack onClick={restartHandle} />
-          {!playing ? (
-            <FiPlay onClick={playAudioToggle} />
-          ) : (
-            <FiPause onClick={playAudioToggle} />
-          )}
         </div>
       </div>
     </div>

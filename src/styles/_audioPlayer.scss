@@ -1,61 +1,78 @@
-
-
-.audioPlayer{
-    z-index: 3;
-    position: fixed;
-    bottom: 0%;
-    width: 100vw;
-    background-color: #1b1a22;
-    transition: 1s ease all;
-    transform: translatey(100%);
-    opacity: 0;
-    border-top: 1px solid rgb(70, 67, 87);
+.audioPlayer {
+  z-index: 3;
+  position: fixed;
+  bottom: 0%;
+  width: 100vw;
+  background-color: #1b1a22;
+  transition: 1s ease transform;
+  transform: translatey(100%);
+  opacity: 0;
+  border-top: 1px solid rgb(70, 67, 87);
 }
 
-.loaded{
-    transform: translatey(00%);
-    opacity: 1;
+.loaded {
+  transform: translatey(00%);
+  opacity: 1;
 }
 
+.audioPlayerLayout {
+  display: flex;
+  width: 95%;
+  max-width: 1200px;
+  margin: 0 auto;
+  justify-content: space-between;
 
-.audioPlayerLayout{
+  &__info {
+  }
+  &__progress {
     display: flex;
-    width: 90%;
-    max-width: 1200px;
-    margin: 0 auto;
-    justify-content: space-between;
-
-
-    &__info{
-        
+    flex-direction: column;
+    justify-content: space-around;
+  }
+  &__controls {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    svg {
+      height: 100%;
+      font-size: 40px;
     }
-    &__progress{
-        display: flex;
-        flex-direction: column;
-        justify-content: space-around;
-    }
-    &__controls{
-        display: flex;
-        flex-direction: column;
-        justify-content: space-around;
-        svg{
-            font-size: 30px;
-        }
-    }
+  }
 }
 
-#seekBar{
-    width: 50vw;
-    // max-width: 500px;
-    color: white;
-    height: 5px;
-    background-color: grey;
-    cursor: pointer;
-    position: relative;
+#seekBar {
+  width: 50vw;
+  max-width: 800px;
+  border: none;
+  cursor: pointer;
+  position: relative;
+}
 
-    .fill{
-        background-color: white;
-        width: 50px;
-        height: 5px;
-    }
+
+
+.audioPlayer {
+  input[type="range"] {
+    width: 100%; /* Specific width is required for Firefox. */
+    background: rgb(5, 4, 88); /* Otherwise white in Chrome */
+    border-radius: 5px;
+  }
+  input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    height: 20px;
+    background: #7e7e7e;
+    cursor: pointer;
+  }
+
+  #volumeSlider {
+    // transform: rotate(-90deg);
+    // height: 0;
+  }
+}
+// @media(max-width: 800px){
+//   #volumeSlider{
+//     display: none;
+//   }
+// }
+#volumeSlider{
+  display: none;
 }

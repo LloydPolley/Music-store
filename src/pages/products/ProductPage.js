@@ -49,13 +49,16 @@ const ProductPage = props => {
           <div className="productInfo">
             <div className="productInfo__top">
               <h1>{props.stateProduct[0].songTitle}</h1>
-              <p>{props.stateProduct[0].artist}</p>
+              <h2>{props.stateProduct[0].artist}</h2>
             </div>
-            <div className="productInfo__bottom">
+            <div className="productInfo__image">
+              <img src={artworkFile} />
+              <FiPlay className="media-controls__play" onClick={play} />
+            </div>
+            {/* <div className="productInfo__bottom">
               {!liked ? (
                 <MdFavoriteBorder
                   onClick={() => {
-                    console.log(props, "liked state");
                     props.dispatch(addProductBasket(p));
                     setLiked(true);
                   }}
@@ -64,9 +67,8 @@ const ProductPage = props => {
                 <MdFavorite />
               )}
               <FiPlay className="media-controls" onClick={play} />
-            </div>
+            </div> */}
           </div>
-          <img src={artworkFile} />
         </div>
       )}
     </div>
