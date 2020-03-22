@@ -51,22 +51,10 @@ const ListItemsSmall = props => {
             <FiPlay onClick={play} />
           </div>
         </div>
-        <img src={artworkFile} />
-      </div>
-      {/* <div className="layer" to={`${props.location}/${props.product.id}`}>
-        <div className="">
-          <Link to={`${props.location}/${props.product.id}`}>
-            <h1>{props.product.songTitle}</h1>
-          </Link>
-          <Link to={`product/${props.product.id}`}>
-            <p>{props.product.artist}</p>
-          </Link>
-          <span>
-            <FiPlay onClick={play} />
-          </span>
+        <div className="layer__right">
+          <img src={artworkFile} />
         </div>
-        <img src={artworkFile} />
-      </div> */}
+      </div>
     </div>
   );
 };

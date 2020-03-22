@@ -3,6 +3,7 @@ import { FiPlay, FiPause, FiSkipBack } from "react-icons/fi";
 import { connect } from "react-redux";
 
 let audioPlayer = new Audio();
+// audioPlayer.play();
 // audioPlayer.addEventListener("timeupdate", () => {
 //   console.log(audioPlayer.currentTime);
 // });
@@ -25,13 +26,17 @@ const AudioPlayer = props => {
       setTrack(props.trackPlaying.title);
       playAudioToggle();
       seekBarTimeUpdate();
-      // console.log("running");
+      console.log(props.trackPlaying.audio);
     }
   }, [props.trackPlaying]);
 
-  // const fillTime = {
-  //   width: `${currentTime}%`
-  // };
+
+  const enableAudioIos = () => {
+    // audioPlayer.src = 'https://firebasestorage.googleapis.com/v0/b/music-store-project-61ddd.appspot.com/o/artists%2Faudio%2FME-Garden.mp3?alt=media&token=660c4e7a-ada0-469e-a293-dbc60e32e530';
+    audioPlayer.play().then(()=>{
+      
+    });
+  }
 
   const playAudioToggle = () => {
     // console.log(audioPlayer.src);
@@ -110,6 +115,7 @@ const AudioPlayer = props => {
             className="slider"
             id="volumeSlider"
           />
+          <input type="radio" className="iosAudioToggle" name="gender" value="male" onChange={enableAudioIos}/>
         </div>
       </div>
     </div>
