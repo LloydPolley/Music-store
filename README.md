@@ -1,14 +1,14 @@
 
-## Trax - Music streaming service - Project under development
+# Trax - Music streaming service - Project under development
 
 Basic music streaming app with user upload. This app is currently under development with few bugs
 
-# Tech used
+## Tech used
 
 This has been created using React, redux, firebase
 
 
-# Known problems
+## Known problems
 
 - Audio slow on loading
 - No persistant state on "liking" songs
