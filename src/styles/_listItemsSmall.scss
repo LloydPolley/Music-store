@@ -20,7 +20,8 @@
         justify-content: space-around;
       img {
         width: 100%;
-        max-width: 300px;
+        max-height: 200px;
+        object-fit: contain;
       }
     }
     div {
