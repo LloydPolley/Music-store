@@ -1,14 +1,15 @@
 import React from "react";
 import ListItem from "../../components/products/ListItem";
 import { connect } from "react-redux";
-import ProductListSmall from '../../components/products/ProductListSmall';
+import ProductList from '../../components/products/ProductList';
 
 const Likes = props => {
-  // console.log('likes', props)
+  console.log('likes', props)
   return (
     <div className="LikesContainer">
       <h1>Likes</h1>
-      <ProductListSmall likes={props.likes} dispatch={props.dispatch} location="products"/>
+      {/* <ProductListSmall likes={props.likes} dispatch={props.dispatch} location="products"/> */}
+      <ProductList products={props.likes} dispatch={props.dispatch} location="products"/>
     </div>
   );
 };

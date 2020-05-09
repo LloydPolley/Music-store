@@ -6,7 +6,7 @@ import ProductList from '../../components/products/ProductList';
 const ProductListingPage = props => {
   return (
     <div className="productListings">
-      <h1>New on TrackSrc</h1>
+      <h1>Latest sounds</h1>
       {/* <p>This website is still under development with features missing</p>
       <p>Upcoming features are:</p>
       <ul>

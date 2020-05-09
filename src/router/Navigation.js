@@ -3,11 +3,9 @@ import { NavLink } from "react-router-dom";
 // import { MdLibraryMusic } from "react-icons/md";
 import { FiChevronsRight } from "react-icons/fi";
 import { connect } from "react-redux";
-import BasketWidget from "../components/basket/Widget";
 
 const Navigation = props => {
   const mobButton = useRef(null);
-  const basketIcon = useRef(null);
 
   const openMobMenu = e => {
     console.log("menu clicked");
@@ -18,20 +16,7 @@ const Navigation = props => {
     mobButton.current.classList.toggle("show");
   };
 
-  const basketHover = e => {
-    basketIcon.current.classList += " show";
-  };
-  const basketLeave = e => {
-    basketIcon.current.classList = "basketWidgetContainer";
-    // console.log(basketIcon);
-  };
-
-  const basketAnimation = e => {
-    this.basketHover();
-    setTimeout(function() {
-      this.basketLeave();
-    }, 1500);
-  };
+ 
 
   return (
     <div className="navBarContainer">
@@ -46,7 +31,7 @@ const Navigation = props => {
             exact={true}
             onClick={closeMenu}
           >
-            TrackSrc
+            Soundr
           </NavLink>
         </div>
         <div className="navBar__linksContainer">
@@ -66,32 +51,7 @@ const Navigation = props => {
           >
             Upload
           </NavLink>
-          {/* <div className="basketContainer">
-            <p
-              onClick={e => {
-                basketHover(e);
-              }}
-            >
-              {props.basket.length}
-            </p>
-            <div
-              className="basketWidgetContainer"
-              ref={basketIcon}
-              onClick={e => {
-                basketLeave(e);
-                console.log("widget");
-              }}
-            >
-              <BasketWidget
-                className="basketWidget"
-                basket={props.basket}
-                onChange={() => {
-                  console.log("updated basket");
-                  basketAnimation();
-                }}
-              />
-            </div>
-          </div> */}
+          
         </div>
       </div>
     </div>
@@ -100,7 +60,7 @@ const Navigation = props => {
 
 const mapStateToProps = state => {
   return {
-    basket: state.basket
+    // basket: state.basket
   };
 };
 

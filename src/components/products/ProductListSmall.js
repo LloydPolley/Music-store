@@ -1,5 +1,6 @@
 import React from "react";
 import ListItemSmall from "./ListItemSmall";
+import ProductItem from "./ProductItem";
 
 const ProductListSmall = props => {
   // console.log(props, 'small')
@@ -9,17 +10,17 @@ const ProductListSmall = props => {
         {props.likes === undefined ? (
           <h1>No likes</h1>
         ) : (
-          props.likes.map(like => {
-            return (
-              <ListItemSmall
-                key={like.id}
-                like={like}
-                // dispatch={props.dispatch}
-                // location={props.location}
-              />
+            props.likes.map(like => {
+              return (
+                <ProductItem
+                  key={like.id}
+                  product={like}
+                  dispatch={like.dispatch}
+                  location={like.location}
+                />
             );
-          })
-        )}
+            })
+          )}
       </div>
     </div>
   );

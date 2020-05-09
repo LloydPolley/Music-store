@@ -1,5 +1,5 @@
 import React from "react";
-import ListItem from './ListItem';
+import ProductItem from './ProductItem';
 
 const ProductList = (props) => (
     
@@ -7,7 +7,7 @@ const ProductList = (props) => (
     <div className="productListings__list">
       {props.products.map(product => {
         return (
-          <ListItem
+          <ProductItem
             key={product.id}
             product={product}
             dispatch={props.dispatch}
