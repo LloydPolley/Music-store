@@ -1,0 +1,24 @@
+.widget {
+    &__large {
+        width: 100%;
+        background-color: #1b1a22;
+        text-align: center;
+        min-height: 300px;
+        margin-bottom: 2em;
+
+        color: white;
+
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+
+        a {
+            color: white;
+            text-decoration: none;
+        }
+
+        h1 {
+            margin: 0;
+        }
+    }
+}

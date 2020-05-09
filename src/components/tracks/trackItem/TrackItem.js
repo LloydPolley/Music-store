@@ -3,17 +3,19 @@ import { Link } from "react-router-dom";
 import { GoPlus } from "react-icons/go";
 import { FiPlay } from "react-icons/fi";
 import { MdFavoriteBorder, MdFavorite } from "react-icons/md";
-import { addProductBasket } from "../../actions/basket";
-import { fireDownloadArtwork, fireDownloadAudio } from "../../actions/products";
-import { storage } from "../../firebase/firebase";
-import { loadTrack } from "../../actions/audioPlayer";
+import { addProductBasket } from "../../../actions/basket";
+import { fireDownloadArtwork, fireDownloadAudio } from "../../../actions/products";
+import { storage } from "../../../firebase/firebase";
+import { loadTrack } from "../../../actions/audioPlayer";
 import { connect } from "react-redux";
 
-import { downloadAudio, downloadArtwork } from "../../actions/download";
+import { downloadAudio, downloadArtwork } from "../../../actions/download";
+
+import './trackItem.scss';
 
 //Replacing ListItem
 
-const ProductItem = props => {
+const TrackItem = props => {
   const [artworkFile, setArtworkFile] = useState("");
   const [audioFile, setAudioFile] = useState("");
   const [liked, setLiked] = useState(false);
@@ -79,4 +81,4 @@ const mapStateToProps = state => {
   };
 };
 
-export default connect(mapStateToProps)(ProductItem);
+export default connect(mapStateToProps)(TrackItem);

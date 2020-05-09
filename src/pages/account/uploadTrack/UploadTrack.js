@@ -1,12 +1,11 @@
 import React from "react";
-// import ProductList from "../../components/products/ProductList";
-import ProductForm from "../../components/admin/ProductForm";
 
 import { connect } from "react-redux";
-import { removeProduct } from "../../actions/products";
-import { addProduct, fireAddProduct } from "../../actions/products";
+import { removeProduct } from "../../../actions/products";
+import { addProduct, fireAddProduct } from "../../../actions/products";
+import EditTrack from "../editTrack/EditTrack";
 
-
+import './uploadTrack.scss';
 
 const ProductAdder = props => {
   const removeProductHandler = id => {
@@ -17,8 +16,7 @@ const ProductAdder = props => {
   return (
     <div className="productAdder">
       <h1>Add product</h1>
-      <ProductForm dispatchFunction={fireAddProduct}/>
-      {/* <ProductList products={props.products} dispatch={props.dispatch} location="addProduct"/> */}
+      <EditTrack dispatchFunction={fireAddProduct}/>
     </div>
   );
 };
@@ -30,4 +28,3 @@ const mapStateToProps = state => {
 };
 
 export default connect(mapStateToProps)(ProductAdder);
-// export default ProductAdder;

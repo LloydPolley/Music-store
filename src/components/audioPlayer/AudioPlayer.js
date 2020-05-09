@@ -1,14 +1,11 @@
 import React, { useEffect, useState, useRef } from "react";
 import { FiPlay, FiPause, FiSkipBack } from "react-icons/fi";
 import { connect } from "react-redux";
+import './audioPlayer.scss';
 
 let audioPlayer = new Audio();
 audioPlayer.src = 'https://firebasestorage.googleapis.com/v0/b/music-store-project-61ddd.appspot.com/o/artists%2Faudio%2FME-Garden.mp3?alt=media&token=660c4e7a-ada0-469e-a293-dbc60e32e530';
-console.log(audioPlayer)
-// audioPlayer.play();
-// audioPlayer.addEventListener("timeupdate", () => {
-//   console.log(audioPlayer.currentTime);
-// });
+// console.log(audioPlayer)
 
 const AudioPlayer = props => {
   const [playing, setPlaying] = useState(false);
@@ -21,7 +18,6 @@ const AudioPlayer = props => {
   const refFillBar = useRef(null);
 
   useEffect(() => {
-    // console.log(props.trackPlaying, "pp");
     if (props.trackPlaying.length === undefined) {
       audioPlayer.src = props.trackPlaying.audio;
       setArtist(props.trackPlaying.artist);
@@ -36,13 +32,6 @@ const AudioPlayer = props => {
     console.log('playing: ', audioPlayer.paused)
   })
 
-
-  // const enableAudioIos = () => {
-  //   // audioPlayer.src = 'https://firebasestorage.googleapis.com/v0/b/music-store-project-61ddd.appspot.com/o/artists%2Faudio%2FME-Garden.mp3?alt=media&token=660c4e7a-ada0-469e-a293-dbc60e32e530';
-  //   audioPlayer.play().then(()=>{
-      
-  //   });
-  // }
 
   const playAudioToggle = () => {
     // console.log(audioPlayer.src);
@@ -121,7 +110,6 @@ const AudioPlayer = props => {
             className="slider"
             id="volumeSlider"
           />
-          {/* <input type="radio" className="iosAudioToggle" name="gender" value="male" onChange={enableAudioIos}/> */}
         </div>
       </div>
     </div>

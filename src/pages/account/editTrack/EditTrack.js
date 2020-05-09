@@ -1,11 +1,11 @@
 import React from "react";
 import {} from "react-redux";
-import ProductForm from "../../components/admin/ProductForm";
+import ProductForm from "../../../components/admin/ProductForm";
 import { connect } from "react-redux";
 
-import { editProduct } from "../../actions/products";
+import { editProduct } from "../../../actions/products";
 
-const ProductEditor = props => {
+const EditTrack = props => {
   return (
     <div>
       <h1>Product Page - {props.match.params.id}</h1>
@@ -27,4 +27,4 @@ const mapStateToProps = (state, props) => {
   return { stateProduct };
 };
 
-export default connect(mapStateToProps)(ProductEditor);
+export default connect(mapStateToProps)(EditTrack);

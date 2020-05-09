@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from "react";
-import { fireDownloadArtwork, fireDownloadAudio } from "../../actions/products";
+import { fireDownloadArtwork, fireDownloadAudio } from "../../../actions/products";
 import { MdFavoriteBorder, MdFavorite } from "react-icons/md";
 
 import { connect } from "react-redux";
 // import { useState, useEffect } from "react";
 import { FiPlay, FiPause, FiPlusCircle } from "react-icons/fi";
-import { addProductBasket } from "../../actions/basket";
-import { loadTrack } from "../../actions/audioPlayer";
+import { addProductBasket } from "../../../actions/basket";
+import { loadTrack } from "../../../actions/audioPlayer";
 
-// import {}
+import './trackPage.scss';
 
 const ProductPage = props => {
   const p = props.stateProduct[0];

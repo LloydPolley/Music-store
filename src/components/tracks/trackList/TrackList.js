@@ -1,5 +1,7 @@
 import React from "react";
-import ProductItem from './ProductItem';
+import ProductItem from '../trackItem/TrackItem';
+
+import './trackList.scss';
 
 const ProductList = (props) => (
     
