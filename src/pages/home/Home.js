@@ -11,6 +11,7 @@ const Home = () => {
                 <LargeWidget section={'Tracks'} /> 
                 <LargeWidget section={'Mixes'} />
                 <LargeWidget section={'Artists'} />
+                <LargeWidget section={'Labels'} />
             </div>
 
         </div>

@@ -2,6 +2,8 @@ import React from "react";
 import { connect } from "react-redux";
 import ProductList from '../../../components/tracks/trackList/TrackList';
 
+import './trackHome.scss'
+
 const ProductListingPage = props => {
   return (
     <div className="productListings">

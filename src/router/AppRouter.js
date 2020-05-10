@@ -9,6 +9,7 @@ import ProductAdder from '../pages/account/uploadTrack/UploadTrack';
 import ProductEditor from "../pages/account/editTrack/EditTrack";
 import ProductPage from '../pages/tracks/trackPage/trackPage';
 import AudioPlayer from "../components/audioPlayer/AudioPlayer";
+import Footer from '../components/footer/Footer';
 import { connect } from "react-redux";
 
 
@@ -30,6 +31,7 @@ const AppRouter = (props) => {
         <Route path='/products/:id' component={ProductPage}/>
       </Switch>
     </div>
+    <Footer/>
   </BrowserRouter>
 )};
 

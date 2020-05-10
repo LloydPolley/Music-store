@@ -15,7 +15,14 @@ const AudioPlayer = props => {
   const [seek, setSeek] = useState(0);
   const [volume, setVolume] = useState(100);
 
-  const refFillBar = useRef(null);
+  const [toggle, setToggle] = useState(false);
+
+  useEffect(()=>{
+    
+  }, [toggle])
+
+  // const refFillBar = useRef(null);
+  // const refPlayer = useRef(null);
 
   useEffect(() => {
     if (props.trackPlaying.length === undefined) {
@@ -74,8 +81,17 @@ const AudioPlayer = props => {
     }
   };
 
+  const togglePlayer = () => {
+    if(toggle === false){
+      setToggle(true);
+    }else{
+      setToggle(false);
+    }
+  }
+
   return (
     <div className="audioPlayer loaded">
+      <div className="playerToggle" onClick={togglePlayer}>Open</div>
       <div className="audioPlayerLayout">
         <div className="audioPlayerLayout__info">
           <p>{trackName}</p>
