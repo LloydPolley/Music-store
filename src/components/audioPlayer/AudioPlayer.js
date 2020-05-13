@@ -21,7 +21,7 @@ const AudioPlayer = props => {
     
   }, [toggle])
 
-  // const refFillBar = useRef(null);
+  const refFillBar = useRef(null);
   // const refPlayer = useRef(null);
 
   useEffect(() => {
@@ -90,7 +90,7 @@ const AudioPlayer = props => {
   }
 
   return (
-    <div className="audioPlayer loaded">
+    <div className="audioPlayer">
       <div className="playerToggle" onClick={togglePlayer}>Open</div>
       <div className="audioPlayerLayout">
         <div className="audioPlayerLayout__info">

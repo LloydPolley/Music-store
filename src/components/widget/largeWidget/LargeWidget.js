@@ -5,7 +5,7 @@ import '../widgets.scss';
 
 const LargeWidget = props => {
   return (
-    <div className="widget__large">
+    <div className={`widget__large widget__${props.section}`}>
       <Link to={`/${props.link}`}>
         <h1>{props.section}</h1>
       </Link>
